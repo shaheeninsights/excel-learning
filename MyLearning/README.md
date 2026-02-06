@@ -29,3 +29,32 @@ This folder tracks my daily Excele Learning using Luke Barousse’s YouTube cour
 ## Errors
 
 Explored common Excel error types and how to handle them: #DIV/0! (e.g., =1/0) division by zero error; #VALUE! (e.g., =B4 + "text") wrong argument type in formula; #REF! (e.g., =#REF!) invalid cell reference, often due to deleted cells; #NAME? (e.g., =COUNTT(A3:A9)) unrecognized function or name; #N/A (e.g., =VLOOKUP("Value", A1:A10, 2, FALSE)) data not available for lookup; #NUM! (e.g., =SQRT(-1)) invalid numeric value in formula; #NULL! (e.g., =SUM(A1:A10 B1:B10)) Incorrect range intersection.
+
+## Day 3 – Logical Functions, Math Functions & Funnel Chart
+
+### Logical Functions
+Using the same fictitious dataset, I practiced several logical functions to classify and filter data:
+
+- **IF()** – returns values based on a condition  
+- **AND()** – checks whether multiple conditions are TRUE  
+- **OR()** – checks if at least one condition is TRUE  
+- **IFS()** – evaluates multiple conditions for data bucketing  
+
+These were used to analyse job titles, countries, and salary ranges.
+
+### Math Functions
+On a larger dataset, I practiced core math functions:
+
+- **SUM()**, **AVERAGE()**, **MIN()**, **MAX()**, **COUNT()**  
+- **COUNTIF()** and **AVERAGEIF()** for conditional calculations  
+
+I created summary tables showing totals, averages, minimums, maximums, and counts for different job categories and locations.
+
+### Funnel Chart
+I created a funnel chart using the summary values, learning how to:
+
+- Insert a chart  
+- Select appropriate data  
+- Format and present the chart clearly  
+
+This helped reinforce how to visualise decreasing values across categories.
