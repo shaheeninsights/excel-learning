@@ -58,3 +58,47 @@ I created a funnel chart using the summary values, learning how to:
 - Format and present the chart clearly  
 
 This helped reinforce how to visualise decreasing values across categories.
+
+## Day 4 – Statistical Functions, Salary Analysis & Ranking
+
+### Statistical Functions
+Using a subset of the job postings dataset (three columns: job title, country, and average yearly salary), 
+I practiced core statistical functions to summarise the data. These included:
+
+- **COUNT()** – number of salary entries  
+- **AVERAGE()** – mean salary  
+- **MEDIAN()** – middle value in the salary distribution  
+- **STDEV()** – standard deviation to measure salary spread  
+- **MIN() / MAX()** – lowest and highest salaries  
+- **QUARTILE()** – 1st, 2nd (median), and 3rd quartiles  
+- **MODE()** – most frequently occurring salary value  
+
+These functions helped me understand how salaries vary across roles and countries.
+
+### Salary Analysis by Job Title
+Next, I calculated the **average salary for each job title** in the dataset.  
+This allowed me to compare roles such as:
+
+- Data Scientist  
+- Data Engineer  
+- Data Analyst  
+- Machine Learning Engineer  
+- Business Analyst  
+- Senior-level roles  
+
+This step reinforced how grouping and aggregating data help reveal trends.
+
+### Ranking Salaries
+I then used the **RANK()** function to rank job titles from highest‑paid to lowest‑paid based on their average salaries.  
+This created a clear, ordered list showing which roles earn the most.
+
+### Visualisation
+After sorting the ranked salaries, I inserted a **horizontal bar chart** (recommended chart).  
+This chart visually shows:
+
+- highest‑paid roles at the top  
+- lowest‑paid roles at the bottom  
+- all ranks clearly displayed  
+
+This helped me understand how to turn summary tables into visual insights.
+
