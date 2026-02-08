@@ -102,3 +102,51 @@ This chart visually shows:
 
 This helped me understand how to turn summary tables into visual insights.
 
+## Day 5 – Array Functions, Unique Values, Sorting, Median & Monthly Job Counts
+
+### Array Functions
+Today I practiced **Array Functions** using the same job‑posting dataset.  
+I learned about two types of arrays:
+
+- **Modern Dynamic Arrays** – spill automatically and update instantly  
+- **Classic Arrays** – older Excel arrays that require Ctrl + Shift + Enter  
+
+Dynamic arrays made it easier to extract, sort, and analyse multiple values at once.
+
+### Dataset Columns Used
+I worked with three columns from the dataset:
+
+- `job_title_short`
+- `job_posted_date`
+- `salary_year_avg`
+
+### Unique Job Titles
+I extracted all unique job titles using the **UNIQUE()** function:  =UNIQUE(A2:A32673)
+
+
+### Sorting Unique Job Titles
+I sorted the unique job titles alphabetically using **SORT()**:  =SORT(R2#)
+
+
+### Median Salary by Job Title
+I calculated the **median salary** for each job title using a conditional array 
+formula:  =MEDIAN(IF(($A$2:$A$32673=$S2)*($M$2:$M$32673<>""),$M$2:$M$32673))
+
+
+This formula:
+- checks if the job title matches  
+- ignores blank salary values  
+- returns the median salary for that job title  
+
+### Number of Jobs Posted Each Month
+I used **TEXT()** to extract the month name from the posted date, then counted how many jobs were posted each month using this 
+formula: =SUMPRODUCT(--(TEXT($H$2:$H$32673,"mmmm")=$V2))
+
+
+This allowed me to analyse job‑posting activity by month.
+
+
+
+
+
+
