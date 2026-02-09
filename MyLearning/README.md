@@ -123,15 +123,12 @@ I worked with three columns from the dataset:
 ### Unique Job Titles
 I extracted all unique job titles using the **UNIQUE()** function:  =UNIQUE(A2:A32673)
 
-
 ### Sorting Unique Job Titles
 I sorted the unique job titles alphabetically using **SORT()**:  =SORT(R2#)
-
 
 ### Median Salary by Job Title
 I calculated the **median salary** for each job title using a conditional array 
 formula:  =MEDIAN(IF(($A$2:$A$32673=$S2)*($M$2:$M$32673<>""),$M$2:$M$32673))
-
 
 This formula:
 - checks if the job title matches  
@@ -142,8 +139,44 @@ This formula:
 I used **TEXT()** to extract the month name from the posted date, then counted how many jobs were posted each month using this 
 formula: =SUMPRODUCT(--(TEXT($H$2:$H$32673,"mmmm")=$V2))
 
-
 This allowed me to analyse job‑posting activity by month.
+
+## Day 6 – Lookup Functions (VLOOKUP & XLOOKUP)
+
+### Dataset Used
+Today I worked with the Job Openings dataset.  
+The columns used were:
+
+- `job_title_short`
+- `job_country`
+- `salary_year_avg`
+
+### VLOOKUP Practice
+I used **VLOOKUP** to find the **company name** associated with:
+
+- the **minimum** salary  
+- the **maximum** salary  
+- the **median** salary  
+
+This helped me understand how VLOOKUP searches vertically through a table to return related information.
+
+### XLOOKUP Practice
+I then practiced **XLOOKUP**, which is more flexible and powerful than VLOOKUP.
+
+I used XLOOKUP to return:
+
+- the **job title** for the minimum, maximum, and median salary  
+- the **country** for the minimum, maximum, and median salary  
+
+This allowed me to pull information from any column without needing to count column numbers.
+
+### Salary Bucketing with XLOOKUP
+I also used **XLOOKUP** to categorise `salary_year_avg` into **salary buckets**.  
+This involved mapping each salary to a bucket range (e.g., <75K, 75K–100K, 100K–125K, etc.) using a lookup table.
+
+This exercise helped me understand how lookup functions can be used not only to retrieve data, but also to classify and organise it.
+
+
 
 
 
