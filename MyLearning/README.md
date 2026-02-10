@@ -176,6 +176,73 @@ This involved mapping each salary to a bucket range (e.g., <75K, 75K–100K, 100
 
 This exercise helped me understand how lookup functions can be used not only to retrieve data, but also to classify and organise it.
 
+## Day 7 – Text Functions & Skill Extraction
+
+### Dataset Used
+Today I worked with the **Job Applicants dataset**, which contains columns such as:
+
+- Applicant ID  
+- Full Name  
+- Job Position  
+- Application Date & Time  
+- Email  
+- Street  
+- City State Zip  
+- Skills List  
+
+This dataset was used to practice different **Text Functions** in Excel and to analyse applicant skills.
+
+### 1. Text Combination (TEXTJOIN)
+I used the **TEXTJOIN** function to combine address information into one complete address.
+
+Columns used:
+- Street  
+- City State Zip  
+
+These were joined into a single address field using `TEXTJOIN`, which helped me understand how to merge text from separate columns.
+
+### 2. Text Extraction
+I practiced extracting specific parts of text using different Excel functions:
+
+- **TEXTSPLIT()**  
+  - Used to split the *Full Name* column  
+  - Example: extracting the **first name** from a full name
+
+- **RIGHT()**  
+  - Used to extract the **last 3 characters** from the Applicant ID  
+  - Useful for identifying codes or patterns inside IDs
+
+- **TEXTSEARCH(), FIND(), MID()**  
+  - Used together to extract the **State** from the combined `City State Zip` field  
+  - This showed how to locate text positions and pull out specific segments
+
+These exercises helped me understand how to break down and manipulate text fields for cleaning and analysis.
+
+### 3. Skill Extraction & Counting
+At the end, I worked on identifying the **skills of all job applicants**.
+
+Steps completed:
+1. Used **TEXTJOIN** to combine all skills from the Skills List column into one long text string  
+2. Used **TEXTSPLIT** to separate the combined skills into individual skills  
+3. Used **TRANSPOSE** to convert the row of skills into a column  
+4. Used **UNIQUE** to get a list of distinct skills  
+5. Used **COUNTIF** to count how many applicants have each skill  
+
+This produced a clean table showing each skill and how many applicants possess it.
+
+### What the Skills Chart Shows
+The final skills chart displays:
+
+- The **most common skills** among all job applicants  
+- Which skills appear **frequently** vs. **rarely**  
+- A clear comparison of skill popularity across the applicant pool  
+
+This helps identify:
+- The top skills applicants commonly have  
+- Skills that are less common and may represent gaps  
+- Overall skill distribution in the dataset  
+
+
 
 
 
