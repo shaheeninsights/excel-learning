@@ -242,6 +242,61 @@ This helps identify:
 - Skills that are less common and may represent gaps  
 - Overall skill distribution in the dataset  
 
+## Day 8 – Date and Time Functions
+
+### Dataset Used
+Today I worked with the **Job Posting dataset**, but only used the first **20 rows** because date and time functions can be time‑consuming on large datasets.
+
+### 1. Date Functions
+I practiced extracting different parts of a date using:
+
+- **YEAR()** – extracts the year  
+- **MONTH()** – extracts the month number  
+- **DAY()** – extracts the day number  
+
+I also used:
+
+- **DATE()** – to construct a date from year, month, and day  
+- **TODAY()** – to return the current date  
+- **DATEDIF()** – to calculate the number of days since an application was made  
+
+This helped me understand how to break down and work with date values for analysis.
+
+### 2. Time Functions
+I practiced extracting time components from the application timestamp using:
+
+- **HOUR()** – extracts the hour  
+- **MINUTE()** – extracts the minute  
+- **SECOND()** – extracts the second  
+
+I also noted that time can be extracted using the **TEXT()** function as an alternative method.
+
+### 3. Hour‑Based Application Analysis
+To analyse the time of day when applications are submitted, I used:
+
+- **SEQUENCE()** to generate **24 rows**, representing each hour of the day  
+- Extracted the hour from each application timestamp  
+- Counted how many applications were made in each hour  
+
+This allowed me to see the distribution of applications across the day.
+
+### Final Chart
+A chart was created using:
+
+- **24 hours of the day**  
+- **Number of applications submitted in each hour**  
+
+### What the Chart Shows
+The chart clearly shows:
+
+- The **time of day when most applications are submitted**  
+- In this dataset, the **highest number of applications were made at the end of the day**  
+- Lower activity during early morning hours  
+- A gradual increase as the day progresses  
+
+This provides insight into applicant behaviour and peak activity times.
+
+
 
 
 
