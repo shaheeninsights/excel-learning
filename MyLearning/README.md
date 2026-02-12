@@ -296,6 +296,118 @@ The chart clearly shows:
 
 This provides insight into applicant behaviour and peak activity times.
 
+## Day 9 – Introduction to Charts
+
+### Dataset Used
+Today I worked with the **Job Posting dataset** to learn the basics of charts in Excel.  
+Charts are also called **plots**, **graphs**, or **visualisations**.  
+They are powerful because, as the saying goes, *a picture speaks a thousand words*.
+
+Excel provides:
+- **Recommended Charts** – helpful suggestions based on the data  
+- **All Charts** – full list of chart types with customisation options  
+
+I also explored chart elements such as:
+- Axes  
+- Axis titles  
+- Chart title  
+- Gridlines  
+- Data labels  
+- Legend  
+- Trendline  
+- Error bars  
+- Up/Down bars  
+- Quick Layout options  
+
+---
+
+## 1. Line Chart – Job Postings by Month
+A **line chart** is best for **time‑series data** because it shows how values change over time and how each point is connected.
+
+For this dataset, I created a line chart showing:
+- **X‑axis:** Months  
+- **Y‑axis:** Count of job postings  
+- **Chart title:** Job Postings by Month  
+- **Y‑axis title:** Count of Jobs  
+- **Trendline:** Added to show the overall direction  
+
+This chart helps identify seasonal patterns or monthly trends in job postings.
+
+---
+
+## 2. Pie Chart – Jobs Mentioning a Degree
+A **pie chart** is used to show **proportions** or **percentages** of a whole.
+
+I created a pie chart to answer the question:
+
+**“What jobs mention a degree?”**
+
+The chart showed:
+- **Degree mentioned:** 81%  
+- **No degree mentioned:** 19%  
+
+This visualisation makes it easy to compare the share of postings that require a degree versus those that do not.
+
+---
+
+## 3. Column Chart – Job Count by Job Title
+A **column chart** uses **vertical bars**.  
+It is ideal for comparing values across categories.
+
+Using the job posting dataset, the column chart showed:
+- Data Analyst roles have the highest number of postings  
+- Followed by Data Scientist and Data Engineer  
+- Senior roles have significantly fewer postings  
+
+This chart helps compare job demand across different job titles.
+
+---
+
+## 4. Bar Chart – Top Jobs in Data Science
+A **bar chart** uses **horizontal bars**.  
+It is useful when:
+- Category names are long  
+- You want an easy left‑to‑right comparison  
+- You want to rank categories clearly  
+
+The bar chart displayed:
+- Data Analyst: 9.6K  
+- Data Scientist: 8.5K  
+- Data Engineer: 6.8K  
+- Senior roles: much lower counts  
+
+This chart clearly shows the ranking of job roles in terms of demand.
+
+---
+
+### Difference Between Column and Bar Charts
+| Chart Type | Orientation | Best For |
+|-----------|-------------|----------|
+| **Column Chart** | Vertical bars | Comparing values when categories are short or few |
+| **Bar Chart** | Horizontal bars | Long category names, ranking, easier readability |
+
+Both charts compare categories, but the orientation changes readability and emphasis.
+
+---
+
+### Summary
+Today’s work helped me understand:
+- When to use each chart type  
+- How to customise chart elements  
+- How charts reveal insights quickly  
+- How different chart types communicate different messages  
+
+Charts make data easier to understand and are essential for presenting analysis clearly.
+
+## Chart Summary Table
+
+| Chart Type      | Orientation / Shape | Best Used For | Strengths | Example From Dataset |
+|-----------------|---------------------|----------------|-----------|-----------------------|
+| **Line Chart**  | Connected points forming a line | Time‑series data | Shows trends over time, highlights increases/decreases | Job postings by month with a trendline |
+| **Pie Chart**   | Circular chart divided into slices | Showing proportions or percentages | Easy to compare parts of a whole | % of job postings mentioning a degree vs not |
+| **Column Chart** | Vertical bars | Comparing categories when labels are short | Good for side‑by‑side comparisons, easy to read | Job count by job title (Data Analyst, Data Scientist, etc.) |
+| **Bar Chart**   | Horizontal bars | Comparing categories with long labels or ranking | Best for readability when category names are long; great for ranking | Top jobs in data science (Data Analyst, Data Scientist, etc.) |
+
 
 
 
