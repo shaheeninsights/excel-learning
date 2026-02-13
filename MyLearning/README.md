@@ -408,6 +408,84 @@ Charts make data easier to understand and are essential for presenting analysis 
 | **Column Chart** | Vertical bars | Comparing categories when labels are short | Good for side‑by‑side comparisons, easy to read | Job count by job title (Data Analyst, Data Scientist, etc.) |
 | **Bar Chart**   | Horizontal bars | Comparing categories with long labels or ranking | Best for readability when category names are long; great for ranking | Top jobs in data science (Data Analyst, Data Scientist, etc.) |
 
+## Day 10 – Advanced Charts
+
+### Dataset Used
+Today I continued working with the **Job Posting dataset**, the same dataset used in Day 9.  
+The focus was on deeper visual analysis of job pay and job location using **advanced chart types** and **customisation techniques**.
+
+---
+
+## 1. Scatter Plot – Comparing Yearly and Hourly Pay
+
+A **scatter plot** is ideal when comparing **two numerical values**.  
+In this analysis, I compared:
+
+- `salary_year_avg`  
+- `salary_hour_avg`  
+
+This allowed me to see how yearly and hourly pay relate across different job titles.
+
+### Customisation Practiced
+I explored several advanced formatting options:
+
+- Adjusting **axis bounds** to improve readability  
+- Changing **number formats** (custom formatting for currency)  
+- Applying a **clean font** to reduce visual clutter  
+- Adding **axis titles**  
+- Adding an appropriate **chart title**  
+- Adding **data labels** to show the job title for each point  
+- Using **leader lines** to keep labels neat and readable  
+- Adding a **trendline** to show the overall relationship between hourly and yearly pay  
+
+### What the Scatter Plot Shows
+The scatter plot reveals:
+
+- Senior roles (e.g., Senior Data Engineer, Senior Data Scientist) have the **highest yearly and hourly pay**  
+- Entry‑level roles (e.g., Data Analyst, Business Analyst) cluster at the lower end  
+- There is a clear **positive relationship** between hourly and yearly pay  
+- Job titles are spread across the chart, showing variation in compensation across the data field  
+
+This chart helps identify which roles offer the highest compensation and how pay scales across different job types.
+
+---
+
+## 2. Map Chart – Job Counts and Salary by Country
+
+A **map chart** is useful for showing **geographical patterns** in data.
+
+I created two map charts:
+
+### a) Job Count by Country
+This map shows where most jobs in the dataset are located.
+
+Key insights:
+- The United States has the **highest number of job postings**  
+- Other countries such as Canada, the UK, India, and Australia also show notable job counts  
+- Lighter shades indicate fewer postings, darker shades indicate more  
+
+This helps identify global job distribution.
+
+### b) Median Salary by Country
+This map shows which countries offer the **highest median salaries**.
+
+Key insights:
+- Darker regions represent **higher median pay**  
+- Some countries show significantly higher salary levels than others  
+- This helps compare earning potential across different regions  
+
+---
+
+## Summary
+Today’s work focused on:
+
+- Using **advanced chart types** (scatter plot and map chart)  
+- Customising charts for clarity and presentation quality  
+- Analysing job pay across roles and countries  
+- Understanding how geography and job title influence compensation  
+
+These visualisations provide deeper insights into the dataset and help communicate findings more effectively.
+
 
 
 
