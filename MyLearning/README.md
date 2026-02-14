@@ -486,6 +486,107 @@ Today’s work focused on:
 
 These visualisations provide deeper insights into the dataset and help communicate findings more effectively.
 
+## Day 11 – Charts & Statistics
+
+### Dataset Used
+Today I worked with the **salary dataset**, specifically focusing on **yearly salary data**.  
+The goal was to understand statistical charts that help describe the **distribution**, **spread**, and **shape** of salary data.
+
+Two major chart types were explored:
+1. Histogram  
+2. Box & Whisker Plot  
+
+These charts are essential for understanding how salary values are distributed and where the data is concentrated.
+
+---
+
+## 1. Histogram – Understanding Salary Distribution
+
+A **histogram** shows how many values fall into specific ranges.  
+Each bar represents a **bin**, and each bin covers a salary range.
+
+### What I Learned
+- Each bar shows the **count of salaries** within that range  
+- Bins are **equally spaced**  
+- When one bin ends, the next begins — no overlap  
+- Smaller bin width = more detail, but can look noisy  
+- Larger bin width = smoother but less detailed  
+- Axis limits were fixed to avoid sensory overload and make the chart readable  
+- Titles and labels were added for clarity  
+
+### What the Histogram Shows
+The histogram revealed:
+
+- Most Data Analyst salaries in the US fall between **$77K and $94K**  
+- The next most common ranges are **$60K–$77K** and **$94K–$112K**  
+- Very few jobs pay above **$129K**  
+- The distribution is **right‑skewed**  
+  - Meaning: a long tail on the right due to a few very high salaries  
+  - This is common in salary data because a small number of roles pay extremely high amounts  
+
+### Why Histograms Matter
+Histograms help answer:
+- Where do most salaries fall?  
+- Are salaries evenly spread or concentrated?  
+- Are there outliers pulling the distribution?  
+- Is the data skewed left or right?  
+
+This is the foundation of understanding **salary ranges and market expectations**.
+
+---
+
+## 2. Box & Whisker Plot – Understanding Spread, Median & Outliers
+
+A **box and whisker plot** (boxplot) is a powerful statistical chart that summarises the entire dataset in one visual.
+
+### How to Read a Boxplot
+- The **box** shows the **Interquartile Range (IQR)**  
+  - Left side of the box = **Q1 (25th percentile)**  
+  - Right side of the box = **Q3 (75th percentile)**  
+- The **line inside the box** = **Median (50th percentile)**  
+- The **X inside the box** = **Mean (average)**  
+- The **whiskers** show the range of values within 1.5 × IQR  
+- Any dots beyond the whiskers = **Outliers**  
+  - These are unusually high or low values  
+
+### What the Boxplot Shows (Salary Data)
+From the boxplots:
+
+- The median salary sits well below the highest values  
+- There are many **high‑salary outliers**  
+- The IQR shows where the **middle 50%** of salaries lie  
+- The whiskers show the typical salary range  
+- Outliers represent very high‑paying roles  
+
+### Why Boxplots Matter
+Boxplots help answer:
+- What is the median salary?  
+- How spread out are salaries?  
+- Are there extreme outliers?  
+- Which job titles have the highest typical pay?  
+- How do different job roles compare?  
+
+### Boxplots by Job Title
+When boxplots were paired with job titles (e.g., Data Scientist, Data Engineer, Senior roles):
+
+- Senior roles had **higher medians** and **more outliers**  
+- Entry‑level roles had **lower medians** and **tighter ranges**  
+- Some roles (like Senior Data Engineer) had extremely high outliers  
+- This makes it easy to compare pay across job categories  
+
+---
+
+## Summary
+Today’s work focused on understanding **statistical charts** that describe how salary data behaves.
+
+### Key Takeaways
+- **Histograms** show the *shape* of the data — where values cluster and how they spread  
+- **Boxplots** show the *summary statistics* — median, quartiles, range, and outliers  
+- Salary data is often **right‑skewed** because a few roles pay extremely high salaries  
+- Boxplots make it easy to compare salary distributions across job titles  
+
+These charts help analysts understand not just the numbers, but the **story behind the numbers**.
+
 
 
 
