@@ -587,6 +587,101 @@ Today’s work focused on understanding **statistical charts** that describe how
 
 These charts help analysts understand not just the numbers, but the **story behind the numbers**.
 
+## Day 12 – Sparklines
+
+### Dataset Used
+Today I continued working with the **Job Posting dataset**, focusing specifically on **monthly job posting counts** for different job roles.  
+The goal was to learn how to use **sparklines**, which are tiny charts that sit inside a cell and summarise trends in a compact way.
+
+---
+
+## What Are Sparklines?
+A **sparkline** is a small chart placed inside a single cell.  
+It gives a quick visual summary of the data next to it — without taking up space like a full chart.
+
+Sparklines are useful for:
+- spotting trends  
+- comparing patterns across rows  
+- showing increases and decreases  
+- highlighting seasonality  
+
+They are perfect when you want a **quick visual snapshot** rather than a full chart.
+
+---
+
+## Types of Sparklines in Excel
+Excel provides three sparkline types (Insert → Sparklines):
+
+1. **Line Sparkline**  
+   - Shows trends over time  
+   - Best for monthly or sequential data  
+
+2. **Column Sparkline**  
+   - Shows highs and lows clearly  
+   - Good for comparing values  
+
+3. **Win/Loss Sparkline**  
+   - Used for positive vs negative values  
+   - Not needed for this dataset  
+
+For this task, I used **Line Sparklines** because job postings are tracked **month by month**, and a line makes the trend easy to see.
+
+---
+
+## How Sparklines Were Created
+Steps practised today:
+
+1. Selected the **monthly job posting values** for each job role  
+2. Insert → **Sparklines → Line**  
+3. Choose the **location range** (the cell where the sparkline should appear)  
+4. Applied custom formatting:
+   - Changed **line colour**  
+   - Highlighted **high points**  
+   - Highlighted **low points**  
+   - Adjusted **marker colours** to make the sparkline easier to read  
+
+This made each sparkline visually clear and consistent.
+
+---
+
+## What the Sparklines Show
+Each sparkline represents the **trend of job postings across 12 months** for one job role.
+
+From the sparklines:
+
+- **Data Analyst** and **Data Scientist** roles show strong peaks mid‑year  
+- Senior roles have **lower counts** but follow similar seasonal patterns  
+- Some roles show dips around October–November  
+- The **Total** row sparkline shows the overall trend across all roles combined  
+
+Sparklines make it easy to compare:
+- Which roles are growing  
+- Which roles are stable  
+- Which roles have seasonal fluctuations  
+
+All without needing a full chart.
+
+---
+
+## Why Sparklines Are Useful
+Sparklines are powerful because they:
+
+- Save space  
+- Provide instant visual insight  
+- Work well in dashboards  
+- Help compare multiple rows quickly  
+- Make tables more meaningful  
+
+They are especially useful when dealing with **time‑series data** like monthly job postings.
+
+---
+
+## Summary
+Today’s work focused on using **sparklines** to visualise monthly job posting trends.  
+I learned how to insert, customise, and interpret sparklines, and how they help summarise data patterns directly inside a table.
+
+Sparklines are a great tool for quick insights and are commonly used in dashboards and reports.
+
 
 
 
