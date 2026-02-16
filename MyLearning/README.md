@@ -682,6 +682,226 @@ I learned how to insert, customise, and interpret sparklines, and how they help 
 
 Sparklines are a great tool for quick insights and are commonly used in dashboards and reports.
 
+## Day 13 – Spreadsheet Advance
+
+### Dataset Used
+Today I worked with a **subset of the salary dataset**, focusing on advanced spreadsheet features that improve structure, automation, and analysis.  
+This is the final chapter of Excel Basics and introduces tools that make data handling more efficient and professional.
+
+---
+
+## 1. Introduction to Tables
+
+### Creating a Table
+To convert a normal range into a table:
+- Click anywhere inside the dataset  
+- Go to **Insert → Table**  
+- Excel automatically selects the full range  
+- Ensure **“My table has headers”** is checked  
+
+This creates a structured table with built‑in formatting and functionality.
+
+### Exploring the Table Design Tab
+The **Table Design** tab includes several useful options:
+
+- **Table Name**  
+  - Rename the table to something simple and meaningful  
+  - Example: `SalaryTable`  
+  - Makes formulas easier to read and reference  
+
+- **Table Style Options**  
+  - Header Row  
+  - First Column  
+  - Last Column  
+  - Banded Rows  
+  - Filter Buttons  
+  These help improve readability and navigation.
+
+### Benefits of Using Tables
+Tables provide several advantages:
+
+- **Automatic expansion**  
+  - Adding a new column automatically fills formulas down the entire column  
+
+- **Structured References**  
+  - Instead of cell references like A2:A1000, Excel uses names like:  
+    `=SalaryTable[@YearlySalary]`  
+  - The `@` symbol refers to the current row  
+  - This makes formulas easier to understand and maintain  
+
+- **Easy copying**  
+  - Typing `=SalaryTable` in another sheet copies the entire table  
+
+- **Special reference options**  
+  - `#Headers` → header row  
+  - `#Data` → only the data  
+  - `#All` → entire table  
+  - You can also reference specific columns  
+
+These features make tables ideal for dashboards, automation, and clean reporting.
+
+### Limitations of Tables
+- Large tables can slow down older computers  
+- Some advanced Excel features don’t work directly with tables  
+- But overall, tables are extremely useful for structured analysis
+
+---
+
+## 2. Subtotal and Aggregate Functions
+
+### SUBTOTAL
+The **SUBTOTAL** function can:
+- Sum  
+- Count  
+- Average  
+- Max  
+- Min  
+- And more  
+
+Its main advantage:
+- It **ignores filtered‑out rows**, making it perfect for summarising data inside tables.
+
+### AGGREGATE
+The **AGGREGATE** function is more advanced:
+- Can ignore errors  
+- Can ignore hidden rows  
+- Supports 19 different operations  
+
+Useful when working with messy or incomplete datasets.
+
+---
+
+## 3. Slicers for Tables
+
+### What Are Slicers?
+A **slicer** is a visual filter that allows you to filter a table by clicking buttons instead of using dropdown menus.
+
+### How to Insert a Slicer
+- Select the table  
+- Go to **Table Design → Insert Slicer**  
+- Choose the column to filter by  
+
+### Customising Slicers
+- Change the **caption** to make it more readable  
+- Adjust the **style** for better visibility  
+- Enable **multi‑select** to filter multiple categories at once  
+
+Slicers make filtering:
+- Faster  
+- Cleaner  
+- More interactive  
+- Ideal for dashboards and presentations  
+
+### Excel Table Formula Formats (Structured References)
+
+When a normal range is converted into a **Table**, Excel uses *structured references* instead of cell references.  
+These make formulas easier to read, understand, and maintain.
+
+Below are the most important formats used inside Excel Tables:
+
+---
+
+## 1. Referencing the Entire Table
+`=TableName`
+
+Example:  
+`=SalaryTable`  
+Returns the full table including headers and data.
+
+---
+
+## 2. Referencing Specific Columns
+`=TableName[ColumnName]`
+
+Example:  
+`=SalaryTable[YearlySalary]`  
+Returns the entire YearlySalary column.
+
+---
+
+## 3. Referencing Headers Only
+`=TableName[#Headers]`
+
+Example:  
+`=SalaryTable[#Headers]`  
+Returns only the header row.
+
+---
+
+## 4. Referencing Data Only (No Headers)
+`=TableName[#Data]`
+
+Example:  
+`=SalaryTable[#Data]`  
+Returns only the data rows.
+
+---
+
+## 5. Referencing the Entire Table (Headers + Data)
+`=TableName[#All]`
+
+Example:  
+`=SalaryTable[#All]`  
+Useful when copying the entire table to another sheet.
+
+---
+
+## 6. Referencing a Column Within the Current Row
+`=TableName[@ColumnName]`
+
+Example:  
+`=SalaryTable[@YearlySalary]`  
+Returns the YearlySalary value for the current row only.
+
+This is one of the most powerful features of tables — formulas automatically fill down.
+
+---
+
+## 7. Referencing Multiple Columns
+`=TableName[[Column1]:[Column2]]`
+
+Example:  
+`=SalaryTable[[JobTitle]:[YearlySalary]]`  
+Returns a range from JobTitle to YearlySalary.
+
+---
+
+## 8. Combining Row and Column References
+`=TableName[@[Column1]:[Column2]]`
+
+Example:  
+`=SalaryTable[@[MinSalary]:[MaxSalary]]`  
+Returns the range of values for that row only.
+
+---
+
+## 9. Using Structured References Inside Functions
+Structured references work inside all Excel functions.
+
+Examples:
+
+**SUM of a column:**  
+`=SUM(SalaryTable[YearlySalary])`
+
+**AVERAGE of a column:**  
+`=AVERAGE(SalaryTable[YearlySalary])`
+
+**IF using row reference:**  
+`=IF(SalaryTable[@YearlySalary] > 100000, "High", "Low")`
+
+---
+
+## Why Structured References Matter
+- No more confusing cell references  
+- Formulas auto‑fill and auto‑adjust  
+- Easier to read and debug  
+- Perfect for dashboards and reports  
+- Makes your Excel work look professional  
+
+Structured references are one of the biggest advantages of using tables in Excel.
+
+
+
 
 
 
