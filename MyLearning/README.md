@@ -900,6 +900,167 @@ Examples:
 
 Structured references are one of the biggest advantages of using tables in Excel.
 
+## Day 14 – Formatting & Conditional Formatting
+
+### Dataset Used
+Today I continued working with the **Job Posting dataset**, focusing on formatting techniques and conditional formatting.  
+The goal was to make data easier to read, interpret, and visually analyse.
+
+---
+
+## 1. Basic Cell Formatting
+
+Before applying conditional formatting, I cleaned up the sheet:
+
+- Used **Editing → Clear → Clear Formats** to remove old formatting  
+- Converted the range into a **Table** for cleaner structure  
+- Applied **Cell Styles → Heading 2** for the table title  
+- Used **Merge & Center** to centre the table title  
+- Adjusted column widths and alignment for readability  
+
+These steps ensure the sheet looks clean and professional before adding visual rules.
+
+---
+
+## 2. Introduction to Conditional Formatting
+
+**Conditional Formatting** allows Excel to highlight or format cells *dynamically* based on rules.  
+This makes patterns easier to spot without manually checking values.
+
+Examples:
+- Highlighting high salaries  
+- Colour‑coding job counts  
+- Showing icons for rankings  
+- Adding data bars to show magnitude  
+
+Conditional formatting is found under:
+**Home → Conditional Formatting**
+
+---
+
+## 3. Colour Scales
+
+Colour scales apply a gradient based on the value in each cell.
+
+- Green → higher values  
+- Yellow → mid‑range  
+- Red → lower values  
+
+This is useful for quickly spotting:
+- Which job titles have the highest salaries  
+- Which roles have the lowest job counts  
+- Where WFH% is high or low  
+
+I also practiced:
+- **Clear Rules → Selected Cells**  
+- **Clear Rules → Entire Sheet**  
+to remove formatting when needed.
+
+---
+
+## 4. Format Painter
+
+The **Format Painter** helps copy formatting from one cell or range to another.
+
+Steps:
+1. Select a formatted cell  
+2. Click **Format Painter**  
+3. Click the target cell(s)  
+
+This keeps formatting consistent across the sheet.
+
+---
+
+## 5. Managing Rules
+
+Using **Conditional Formatting → Manage Rules**, I explored:
+
+- Viewing all rules applied to the worksheet  
+- Editing rule order  
+- Changing rule types  
+- Applying rules to specific ranges  
+
+This is essential when multiple rules overlap or when formatting becomes complex.
+
+---
+
+## 6. Data Bars (Applied to Job Count Column)
+
+For the **Job Count** column, I used **Data Bars**.
+
+Why data bars?
+- They visually show the magnitude of each value  
+- Perfect for comparing counts  
+- Less distracting than colour scales  
+- Easy to read horizontally  
+
+Customisation:
+- Chose a subtle colour to avoid visual overload  
+- Ensured bars were readable but not overpowering  
+- Applied only to the first column to keep the table clean  
+
+---
+
+## 7. Icon Sets (Ratings)
+
+Next, I created a **New Formatting Rule** using **Icon Sets**.
+
+Steps:
+1. Conditional Formatting → New Rule  
+2. Select **Icon Set**  
+3. Choose a rating style (e.g., stars, flags, arrows)  
+4. Tick **“Show Icon Only”** to hide the numbers  
+5. Adjust thresholds (e.g., top 20%, mid 50%, bottom 30%)  
+
+This created a clean, visual ranking system for job roles.
+
+### Why Icon Sets Are Useful
+- They summarise performance at a glance  
+- They reduce clutter  
+- They work well for dashboards  
+- They make comparisons intuitive  
+
+I also compared:
+- A **clean, subtle icon‑only version**  
+- A **distracting, overly colourful version**  
+
+This helped me understand the importance of choosing formatting that supports the data instead of overwhelming it.
+
+---
+
+## 8. Good vs Bad Conditional Formatting
+
+Today I learned that conditional formatting can either:
+
+### ✔ Enhance the data  
+- Subtle colours  
+- Clean icon sets  
+- Simple data bars  
+- Consistent formatting  
+
+### ✘ Or distract from the data  
+- Too many colours  
+- Multiple overlapping rules  
+- Bright, clashing formats  
+- Icons on every column  
+
+The goal is to **support the analysis**, not overpower it.
+
+---
+
+## Summary
+Today’s work focused on improving the visual clarity of the dataset using:
+
+- Basic formatting  
+- Conditional formatting  
+- Colour scales  
+- Data bars  
+- Icon sets  
+- Rule management  
+- Format painter  
+
+These tools help make data more readable, highlight important patterns, and create professional‑looking spreadsheets.
+
 
 
 
