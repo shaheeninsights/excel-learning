@@ -1061,6 +1061,168 @@ Today’s work focused on improving the visual clarity of the dataset using:
 
 These tools help make data more readable, highlight important patterns, and create professional‑looking spreadsheets.
 
+## Day 15 – Collaboration & Data Validation
+
+### Dataset Used
+Today I continued working with the **salary dataset**, focusing on two important Excel skills used in real workplaces:
+1. Collaboration (protecting sheets and dashboards)
+2. Data Validation (controlling user input)
+
+These tools help prevent mistakes, protect dashboards, and ensure clean, reliable data entry.
+
+---
+
+## 1. Collaboration: Protecting Sheets & Workbooks
+
+When sharing files with coworkers or stakeholders, it’s important to protect:
+- formulas  
+- dashboards  
+- lookup sheets  
+- data sources  
+
+This prevents accidental edits that could break the entire workbook.
+
+### Protecting a Sheet
+Steps:
+1. Go to **Review → Protect Sheet**  
+2. Add a password (optional but recommended)  
+3. Choose what users are allowed to do (e.g., select cells, sort, filter)
+
+### Why Protect Sheets?
+- Prevents accidental deletion of formulas  
+- Keeps dashboards intact  
+- Ensures coworkers only edit the intended cells  
+- Protects lookup tables and data sources  
+
+### Hiding Supporting Sheets
+Often dashboards rely on:
+- lookup tables  
+- helper sheets  
+- data sources  
+
+To avoid confusion:
+- Right‑click sheet → **Hide**  
+- Protect workbook structure if needed  
+
+This ensures users only see the dashboard and input sheet, not the backend logic.
+
+---
+
+## 2. Data Validation – Controlling User Input
+
+Data validation restricts what users can type into a cell.  
+This prevents:
+- spelling mistakes  
+- invalid job titles  
+- wrong salary inputs  
+- broken formulas  
+
+### Example Used Today: Basic Salary Calculator
+
+I created a simple calculator where the user selects a **job title** from a dropdown, and Excel returns the **median salary**.
+
+This prevents users from typing:
+- wrong job titles  
+- misspellings  
+- values that don’t exist in the dataset  
+
+### Steps to Build the Calculator
+
+#### **Step 1: Create a List of Unique Job Titles**
+On a sheet named **data_validation**:
+- Extracted unique job titles from the main dataset  
+- Also added job count for reference  
+
+This list becomes the source for the dropdown.
+
+#### **Step 2: Apply Data Validation**
+On the **basic calculator** sheet:
+1. Select the cell where the job title will be chosen  
+2. Go to **Data → Data Validation**  
+3. Choose **List**  
+4. Set the **Source** to the unique job titles range  
+
+Now the user can only pick from the dropdown — no typing allowed.
+
+---
+
+## 3. Returning the Median Salary
+
+To calculate the median salary based on the selected job title, I created a new sheet called **median_salary**.
+
+This sheet contains:
+- Job titles  
+- Their median salaries  
+- Sorted and cleaned for lookup  
+
+### Formula Used
+Two approaches were practiced:
+
+#### **1. MEDIAN + IF (Array Formula)**
+Used to calculate the median salary for each job title:
+=MEDIAN(IF(job_title_range = selected_title, salary_range))
+(Entered as a dynamic array formula)
+
+#### **2. XLOOKUP**
+Used in the calculator to return the median salary:
+=XLOOKUP(selected_job_title, job_title_list, median_salary_list)
+
+
+This makes the calculator dynamic and user‑friendly.
+
+---
+
+## 4. Protecting the Calculator
+
+Once the calculator was working:
+- Locked all formula cells  
+- Left only the dropdown cell unlocked  
+- Applied **Review → Protect Sheet**
+
+This ensures:
+- Users can only select a job title  
+- They cannot break formulas  
+- The calculator remains functional and clean  
+
+---
+
+## Workbook Structure Used Today
+
+The workbook now contains four sheets:
+
+1. **Data**  
+   - Original salary dataset  
+
+2. **Basic Calculator**  
+   - Dropdown job title  
+   - Median salary result  
+
+3. **Data Validation**  
+   - Unique job titles  
+   - Job counts  
+
+4. **Median Salary**  
+   - Job titles  
+   - Calculated median salaries  
+   - Used for XLOOKUP  
+
+This structure keeps everything organised and easy to maintain.
+
+---
+
+## Summary
+Today’s work focused on collaboration and data validation — essential skills for real‑world Excel use.
+
+### Key Takeaways
+- Protect sheets to prevent accidental edits  
+- Hide backend sheets to keep dashboards clean  
+- Use data validation to control user input  
+- Build dropdown‑based calculators for clean interaction  
+- Use XLOOKUP and MEDIAN to return dynamic results  
+- Lock formulas and protect sheets before sharing  
+
+These techniques ensure your Excel files are professional, reliable, and safe to share with others.
+
 
 
 
