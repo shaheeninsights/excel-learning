@@ -1223,6 +1223,61 @@ Today’s work focused on collaboration and data validation — essential skills
 
 These techniques ensure your Excel files are professional, reliable, and safe to share with others.
 
+## Day 16 – Salary Dashboard (Setup & Repo Initialization)
+
+### Dataset Used
+Today I began working on the **Salary Dashboard project**, using the dataset provided by the course instructor, **Luke Barousse**.  
+This marks the start of the dashboard section, where all previous Excel skills will be applied in a real‑world project.
+
+---
+
+## 1. Reviewing the Project README
+I started by going through the project’s **README file** to understand:
+
+- The structure of the dashboard  
+- The metrics that will be displayed  
+- The sheets required  
+- The workflow expected in the project  
+- The final deliverables  
+
+This gave me a high‑level overview of what the dashboard will look like and how the data will be used.
+
+---
+
+## 2. Initialising the Git Repository
+
+To keep the project organised and version‑controlled, I:
+
+1. Created a **local Git repository** on my machine  
+2. Added the project files  
+3. Made the initial commit  
+4. Pushed the repository to **GitHub**  
+
+This ensures:
+- My work is backed up  
+- I can track changes  
+- I can share the project easily  
+- I follow good data‑analysis workflow practices  
+
+---
+
+## 3. Project Structure (Initial)
+At this stage, the project contains:
+
+- The dataset  
+- The README  
+- The initial Excel workbook  
+- The Git repo connected to GitHub  
+
+More sheets, calculations, and visuals will be added as the dashboard develops.
+
+---
+
+## Summary
+Today was the setup day for the Salary Dashboard project.  
+I reviewed the project instructions, prepared my environment, and pushed the initial version to GitHub.  
+The next steps will involve cleaning the data, building supporting sheets, and starting the dashboard layout.
+
 
 
 
