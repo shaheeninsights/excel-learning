@@ -1278,6 +1278,98 @@ Today was the setup day for the Salary Dashboard project.
 I reviewed the project instructions, prepared my environment, and pushed the initial version to GitHub.  
 The next steps will involve cleaning the data, building supporting sheets, and starting the dashboard layout.
 
+## Day 17 – Salary Dashboard (Country Dropdown Setup)
+
+### Dataset Used
+Continuing with the job posting dataset from Luke Barousse’s Excel course, today I worked on building the interactive components of the Salary Dashboard. The focus was on creating the **Country** dropdown filter, which will later be used to calculate median salaries and update dashboard visuals dynamically.
+
+---
+
+## Setting Up the Dashboard Sheet
+I began by preparing the layout of the dashboard:
+
+- Positioned the main dashboard title correctly.
+- Ensured spacing and alignment matched the intended structure.
+- Confirmed the existing **Job Title** dropdown was functioning.
+- Identified where the new **Country** dropdown should be placed.
+
+This ensures the dashboard remains clean and consistent as more filters and charts are added.
+
+---
+
+## Creating the Country Data Source
+To support the Country dropdown, I created a new backend sheet named **country**, which will later store:
+
+- `job_country`
+- `median_salary` (used for map chart and lookups)
+
+This sheet will act as a structured reference for future formulas and visuals.
+
+---
+
+## Preparing the Data Validation Source
+All dropdowns must come from a controlled list.  
+On the **data_validation** sheet, I created a new column for unique country names.
+
+### Extracting Unique Countries
+To pull all distinct countries from the dataset:=UNIQUE(jobs[job_country])
+
+This ensures the dropdown only includes valid country names.
+
+### Sorting the List
+To make the dropdown easier to use: =SORT(G2#)
+
+This sorted list was labelled **job_country_sorted**.
+
+Sorting improves usability and keeps the dashboard consistent with the instructor’s version.
+
+---
+
+## Adding the Country Dropdown to the Dashboard
+With the sorted list ready, I added the dropdown to the dashboard.
+
+### Steps:
+1. Select the cell where the Country dropdown will appear.
+2. Go to **Data → Data Validation**.
+3. Choose **List**.
+4. Set the **Source** to the sorted country list on the data_validation sheet.
+5. Apply the rule.
+
+The dashboard now displays a clean, dynamic dropdown of all countries in the dataset.
+
+---
+
+## How This Fits Into the Full Dashboard
+According to the project README, the final dashboard will include:
+
+- Job Title filter  
+- Country filter  
+- Job Type filter  
+- A multi‑criteria MEDIAN formula  
+- A bar chart for job salaries  
+- A map chart for country median salaries  
+
+Today’s work completes the **second major filter** (Country), which is required for:
+
+- The map chart  
+- The multi‑criteria median salary calculation  
+- Dynamic updates to dashboard visuals  
+
+---
+
+## Summary
+Today I completed the **Country dropdown** for the Salary Dashboard by:
+
+- Structuring the dashboard layout  
+- Creating a backend sheet for country data  
+- Extracting unique country names  
+- Sorting the list for usability  
+- Linking the sorted list to the dashboard via data validation  
+
+This prepares the dashboard for the next steps, where additional filters and formulas will be added to make the dashboard fully interactive.
+
+
+
 
 
 
