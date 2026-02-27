@@ -1368,6 +1368,132 @@ Today I completed the **Country dropdown** for the Salary Dashboard by:
 
 This prepares the dashboard for the next steps, where additional filters and formulas will be added to make the dashboard fully interactive.
 
+## Day 18 – Salary Dashboard (Job Type Dropdown Setup)
+
+### Dataset Used
+Continuing with the job posting dataset from Luke Barousse’s Excel course, today’s focus was on creating the **Job Type** dropdown for the Salary Dashboard. This is the third major filter (after Job Title and Country) and will later be used in the multi‑criteria MEDIAN formula that powers the dashboard.
+
+---
+
+## Setting Up the Type Sheet
+To keep the project organised, I created a new sheet named **Type**.  
+This sheet will eventually store:
+
+- `job_schedule_type`
+- `median_salary` (used later for filtering and calculations)
+
+For now, the main goal was to extract and clean the unique job schedule types from the dataset.
+
+---
+
+## Preparing the Data Validation Source (Job Type)
+The raw dataset contains job schedule types in the column `jobs[job_schedule_type]`.  
+However, this column contains messy values such as:
+
+- Multiple schedule types combined with **“and”**
+- Comma‑separated values
+- Occasional blanks or zeros
+
+These must be cleaned before creating a dropdown.
+
+### Step 1 — Extract Unique Job Types
+On the **data_validation** sheet, I added a new column: =UNIQUE(jobs[job_schedule_type])
+
+This returns all distinct schedule types, but the list still contains combined values like:
+
+- “Full‑time and Contract”
+- “Part‑time, Internship”
+
+These cannot be used directly in a dropdown.
+
+---
+
+## Cleaning the Job Type List
+To clean the list, I needed to remove:
+
+- Any value containing **“and”**
+- Any value containing **commas**
+- Any zero or blank values
+
+### Step 2 — Identify values containing “and”
+Using the SEARCH function:=SEARCH("and", J2#)
+
+
+This returns the position of the word “and” if it exists.
+
+### Step 3 — Convert to TRUE/FALSE
+Wrapping SEARCH inside ISNUMBER:=ISNUMBER(SEARCH("and", J2#))
+
+
+- TRUE → “and” exists  
+- FALSE → clean value  
+
+### Step 4 — Filter out unwanted values
+Using FILTER to keep only clean job types:
+
+=FILTER(
+J2#,
+(NOT(ISNUMBER(SEARCH("and", J2#)))) *
+(NOT(ISNUMBER(SEARCH(",", J2#)))) *
+(J2# <> 0)
+)
+
+This formula removes:
+
+- Values containing “and”
+- Values containing commas
+- Zero or blank entries
+
+The result is a clean list of valid job schedule types.
+
+### Step 5 — Sort the Clean List
+To make the dropdown user‑friendly: =SORT(K2#)
+
+This sorted list was named **job_schedule_type_sorted**.
+
+---
+
+## Adding the Job Type Dropdown to the Dashboard
+With the cleaned and sorted list ready, I added the dropdown to the dashboard.
+
+### Steps:
+1. Select the cell where the Job Type dropdown will appear.
+2. Go to **Data → Data Validation**.
+3. Choose **List**.
+4. Set the **Source** to the sorted job schedule type list on the data_validation sheet.
+5. Apply the rule.
+
+The dashboard now displays a clean dropdown of valid job schedule types.
+
+---
+
+## Why This Step Matters
+The Job Type dropdown is essential for:
+
+- The multi‑criteria MEDIAN formula  
+- Filtering the bar chart  
+- Filtering the map chart  
+- Ensuring the dashboard responds to all three user selections:
+  - Job Title  
+  - Country  
+  - Job Type  
+
+Cleaning the job schedule types ensures the dashboard does not break due to inconsistent or combined values.
+
+---
+
+## Summary
+Today I completed the **Job Type dropdown** for the Salary Dashboard by:
+
+- Creating a new Type sheet  
+- Extracting unique job schedule types  
+- Cleaning the list using SEARCH, ISNUMBER, and FILTER  
+- Sorting the cleaned list  
+- Linking the sorted list to the dashboard via data validation  
+
+This completes all three dropdown filters required for the interactive dashboard.
+
+
 
 
 
