@@ -1493,7 +1493,98 @@ Today I completed the **Job Type dropdown** for the Salary Dashboard by:
 
 This completes all three dropdown filters required for the interactive dashboard.
 
+## Day 19 – Salary Dashboard (Country Chart Setup)
 
+### Dataset Used
+Continuing with the job posting dataset from Luke Barousse’s Excel course, today I focused on building the **Country Chart** for the Salary Dashboard. This chart will visually display **median salaries by country**, based on the filters selected by the user.
+
+---
+
+## 1. Preparing the Country Sheet
+
+To support the chart, I worked on the **country** sheet, which acts as the backend data source.
+
+### Step 1 — Pulling Country Names
+I used the following formula to bring in the sorted list of countries from the data_validation sheet: =Data_Validation!H2#
+
+This ensures the country list is consistent with the dropdown filter used on the dashboard.
+
+---
+
+## 2. Calculating Median Salary by Country
+
+For each country, I calculated the **median salary** using a multi‑criteria array formula:
+
+=MEDIAN(
+IF(
+(jobs[job_country]=A2) *
+(jobs[salary_year_avg]<>0) *
+(jobs[job_title_short]=title) *
+(jobs[job_schedule_type]=type),
+jobs[salary_year_avg]
+)
+)
+
+
+### Explanation:
+- Filters the dataset by:
+  - Selected country (`A2`)
+  - Non-zero salaries
+  - Selected job title
+  - Selected job type
+- Returns the **median salary** for matching rows
+
+This formula powers the map chart and ensures the salary data reflects all three filters.
+
+---
+
+## 3. Handling #NUM! Errors
+
+Some countries returned `#NUM!` errors in the median salary column.  
+This happens when:
+
+- No matching rows exist for the selected filters  
+- The filtered salary list is empty  
+- MEDIAN cannot calculate a result from an empty array  
+
+To clean this up, I created a new column called **job_country_filter** using: =SORT(FILTER(A2:B112, ISNUMBER(B2:B112)), 2, -1)
+
+
+### What this does:
+- Filters out rows where median salary is not a number  
+- Sorts the remaining rows by salary (descending)  
+- Returns a clean list of countries and their valid median salaries
+
+This filtered list is used as the source for the map chart.
+
+---
+
+## 4. Building the Country Chart
+
+With the filtered data ready, I inserted a **Map Chart** on the dashboard:
+
+- Selected the **job_country_filter** column and corresponding **median_salary**  
+- Inserted the chart using **Insert → Maps → Filled Map**  
+- Positioned the chart below the Country dropdown
+
+### Why a Map Chart?
+- Visually shows salary differences across countries  
+- Color-coded regions make comparisons intuitive  
+- Matches the instructor’s final dashboard layout
+
+---
+
+## Summary
+
+Today I built the **Country Chart** for the Salary Dashboard by:
+
+- Pulling a clean list of countries from the validation sheet  
+- Calculating median salary using a multi‑criteria formula  
+- Filtering out invalid results using ISNUMBER + FILTER  
+- Sorting the valid results for chart readability  
+- Inserting a map chart to display global salary trends
+
+This chart responds dynamically to the selected filters and helps users understand geographic salary differences.
 
 
 
