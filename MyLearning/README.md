@@ -1586,8 +1586,129 @@ Today I built the **Country Chart** for the Salary Dashboard by:
 
 This chart responds dynamically to the selected filters and helps users understand geographic salary differences.
 
+## Day 20 – Salary Dashboard (Highlighting Selected Job in Bar Chart)
+
+### Dataset Used
+Continuing with the job posting dataset from Luke Barousse’s Excel course, today I worked on building the **Job Title Salary Bar Chart** and adding dynamic highlighting so the selected job title stands out visually on the dashboard. This makes the dashboard more intuitive and helps users quickly compare their chosen job against others.
+
+---
+
+## 1. Preparing the Title Sheet for Chart Data
+To support the bar chart, I expanded the **title** sheet by adding helper columns. These columns calculate:
+
+- Median salary for each job title  
+- Sorted job titles  
+- Highlighting logic for the selected job  
+
+This sheet acts as the backend data source for the bar chart.
+
+---
+
+## 2. Calculating Median Salary for Each Job Title
+In column **B**, I used a multi‑criteria MEDIAN formula:
+                                                        =MEDIAN(
+IF(
+(jobs[job_title_short]=A2) *
+(jobs[salary_year_avg]<>0) *
+(jobs[job_country]=country) *
+(ISNUMBER(SEARCH(type, jobs[job_schedule_type]))),
+jobs[salary_year_avg]
+)
+)
+
+### What this formula does:
+- Filters the dataset by:
+  - Job title (A2)
+  - Non‑zero salaries
+  - Selected country
+  - Selected job type (using SEARCH to match partial text)
+- Returns the **median salary** for that job title under the selected filters
+
+This ensures the bar chart updates dynamically when the user changes dropdown selections.
+
+---
+
+## 3. Sorting Job Titles by Median Salary
+To make the bar chart easier to read, I sorted the job titles based on their median salary:=SORT(A2#:B2#, 2, 1)
 
 
+### Explanation:
+- Sorts the job title list (A2#) and salary list (B2#)
+- Sorts by the **second column** (median salary)
+- Sorts in **descending order** (1)
+
+This sorted list is used directly in the bar chart.
+
+---
+
+## 4. Creating Highlighting Logic for the Chart
+To highlight the selected job title in the bar chart, I created two new columns:
+
+### Column F — All other jobs (light blue)
+=IF($D2<>title, $E2, NA())
+
+### Column G — Selected job only (dark blue)
+=IF($D2=title, $E2, NA())
+
+### Why this works:
+- Column F contains salary values for **all jobs except the selected one**
+- Column G contains salary **only for the selected job**
+- NA() hides the bar in the chart
+- When both series are plotted:
+  - Column F = **light blue** bars  
+  - Column G = **dark blue** bar (highlighted)
+
+This creates a clean visual effect where the selected job title stands out clearly.
+
+---
+
+## 5. Building the Bar Chart on the Dashboard
+With the backend data ready, I inserted a **horizontal bar chart** on the dashboard:
+
+- Series 1 → Column F (light blue, non‑selected jobs)
+- Series 2 → Column G (dark blue, selected job)
+- Category labels → Sorted job titles
+
+### Formatting applied:
+- Removed chart border
+- Adjusted bar thickness
+- Applied custom number formatting to the salary axis:$#,##0,"K"
+
+This displays salaries like:
+- $90K  
+- $125K  
+- $155K  
+
+This matches the instructor’s dashboard style.
+
+---
+
+## 6. Result on the Dashboard
+The bar chart now:
+
+- Updates automatically when the user changes:
+  - Job Title  
+  - Country  
+  - Job Type  
+- Highlights the selected job title in **dark blue**
+- Shows all other job titles in **light blue**
+- Displays salaries in a clean, readable format
+
+This makes the dashboard more interactive and visually intuitive.
+
+---
+
+## Summary
+Today I completed the **Job Title Salary Bar Chart** with dynamic highlighting by:
+
+- Expanding the title sheet with helper columns  
+- Calculating median salary using a multi‑criteria formula  
+- Sorting job titles by salary  
+- Creating highlight logic using IF + NA()  
+- Building a two‑series bar chart with light and dark blue colors  
+- Applying custom number formatting for readability  
+
+This feature helps users instantly see how their selected job compares to others in terms of salary.
 
 
 
