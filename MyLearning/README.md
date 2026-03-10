@@ -1,5 +1,5 @@
 # My Excel learning Log
-This folder tracks my daily Excele Learning using Luke Barousse’s YouTube course.
+This folder tracks my daily Excel Learning using Luke Barousse’s YouTube course.
 
 ## Day 1 - Setup + Excel basics
 
@@ -1710,6 +1710,131 @@ Today I completed the **Job Title Salary Bar Chart** with dynamic highlighting b
 
 This feature helps users instantly see how their selected job compares to others in terms of salary.
 
+## Day 21 – Salary Dashboard (Job Type Chart & Backend Logic)
+
+### Dataset Used
+Continuing with the job posting dataset from Luke Barousse’s Excel course, today I built the **Job Type Salary Chart**. This chart shows how median salaries vary across different job schedule types (Full‑time, Contractor, Part‑time, Internship, Temp work) based on the user’s selected filters. To support this, I expanded the **type** sheet with new formulas, sorting logic, and highlighted columns.
+
+---
+
+## 1. Preparing the Type Sheet Structure
+
+The type sheet now contains the following columns:
+
+- **Column A** — job_schedule_type  
+- **Column B** — median salary for each type  
+- **Column C** — empty spacer column (intentional)  
+- **Column D** — sorted job types  
+- **Column E** — sorted median salaries  
+- **Column F** — non‑selected type values (light blue bars)  
+- **Column G** — selected type values (dark blue bar)  
+
+This layout keeps raw data, sorted data, and highlight logic clearly separated and easy to maintain.
+
+---
+
+## 2. Pulling Job Schedule Types from Data Validation
+
+I pulled the cleaned list of job schedule types from the Data_Validation sheet: =Data_Validation!K2
+
+This ensures the type list matches the dropdown used on the dashboard.
+
+---
+
+## 3. Calculating Median Salary for Each Job Type
+
+In column **B**, I used a multi‑criteria MEDIAN formula with slight adjustments from previous sheets:
+=MEDIAN(
+IF(
+(jobs[job_title_short]=title) *
+(jobs[salary_year_avg]<>0) *
+(jobs[job_country]=country) *
+(ISNUMBER(SEARCH(A2, jobs[job_schedule_type]))),
+jobs[salary_year_avg]
+)
+)
+
+### What this formula does:
+- Filters the dataset by:
+  - Selected job title  
+  - Non‑zero salaries  
+  - Selected country  
+  - Selected job schedule type (A2)  
+- Uses `SEARCH` to match partial text  
+- Returns the **median salary** for that job type  
+
+This ensures the chart updates dynamically when the user changes filters.
+
+---
+
+## 4. Sorting Job Types by Median Salary
+
+To prepare the data for charting, I sorted the job types by their median salary: =SORT(FILTER(A2:B6, ISNUMBER(B2:B6)), 2, 1)
+
+### Why this formula is needed:
+- **FILTER(A2:B6, ISNUMBER(B2:B6))** removes rows where the median salary is not a number (e.g., no matching data for that country).
+- **SORT(..., 2, 1)** sorts the filtered list by the salary column in **descending order**.
+
+This ensures the chart displays job types from highest to lowest salary and avoids errors caused by #NUM! values.
+
+---
+
+## 5. Creating Highlighting Logic for the Chart
+
+To highlight the selected job type in the chart, I added two helper columns:
+
+### Column F — Non‑selected types (light blue)  =IF($D2<>type, $E2, NA())
+
+### Column G — Selected type only (dark blue)  =IF($D2=type, $E2, NA())
+
+
+### Why this works:
+- Column F shows salaries for all types **except** the selected one  
+- Column G shows salary **only** for the selected type  
+- `NA()` hides the bar in the chart  
+- When plotted together:
+  - Column F = light blue bars  
+  - Column G = dark blue bar  
+
+This creates a clean visual highlight effect.
+
+---
+
+## 6. Building the Job Type Chart
+
+I inserted a **clustered bar chart** using:
+
+- **Series 1** → Column F (light blue)  
+- **Series 2** → Column G (dark blue)  
+- **Category labels** → Column D (sorted job types)  
+
+### Formatting applied:
+- Removed chart border  
+- Adjusted bar thickness  
+- Applied custom number formatting to the X‑axis: $#,##0,"K"
+
+
+This displays salaries like:
+- 97K  
+- 122K  
+- 130K  
+
+This keeps the dashboard consistent with the Job Title chart.
+
+---
+
+## Summary
+
+Today I completed the **Job Type Salary Chart** by:
+
+- Pulling job schedule types from the validation sheet  
+- Calculating median salary using a multi‑criteria formula  
+- Filtering and sorting the results  
+- Creating highlight logic using IF + NA()  
+- Building a two‑series bar chart with light and dark blue colors  
+- Applying custom number formatting for readability  
+
+This chart now updates dynamically based on the user’s selected job title, country, and job type, making the dashboard more interactive and insightful.
 
 
 
