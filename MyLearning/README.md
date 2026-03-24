@@ -1406,8 +1406,6 @@ This returns all distinct schedule types, but the list still contains combined v
 
 These cannot be used directly in a dropdown.
 
----
-
 ## Cleaning the Job Type List
 To clean the list, I needed to remove:
 
@@ -1451,8 +1449,6 @@ To make the dropdown user‑friendly: =SORT(K2#)
 
 This sorted list was named **job_schedule_type_sorted**.
 
----
-
 ## Adding the Job Type Dropdown to the Dashboard
 With the cleaned and sorted list ready, I added the dropdown to the dashboard.
 
@@ -1464,8 +1460,6 @@ With the cleaned and sorted list ready, I added the dropdown to the dashboard.
 5. Apply the rule.
 
 The dashboard now displays a clean dropdown of valid job schedule types.
-
----
 
 ## Why This Step Matters
 The Job Type dropdown is essential for:
@@ -1479,8 +1473,6 @@ The Job Type dropdown is essential for:
   - Job Type  
 
 Cleaning the job schedule types ensures the dashboard does not break due to inconsistent or combined values.
-
----
 
 ## Summary
 Today I completed the **Job Type dropdown** for the Salary Dashboard by:
@@ -1497,8 +1489,6 @@ This completes all three dropdown filters required for the interactive dashboard
 
 ### Dataset Used
 Continuing with the job posting dataset from Luke Barousse’s Excel course, today I focused on building the **Country Chart** for the Salary Dashboard. This chart will visually display **median salaries by country**, based on the filters selected by the user.
-
----
 
 ## 1. Preparing the Country Sheet
 
@@ -1536,8 +1526,6 @@ jobs[salary_year_avg]
 
 This formula powers the map chart and ensures the salary data reflects all three filters.
 
----
-
 ## 3. Handling #NUM! Errors
 
 Some countries returned `#NUM!` errors in the median salary column.  
@@ -1551,13 +1539,11 @@ To clean this up, I created a new column called **job_country_filter** using: =S
 
 
 ### What this does:
-- Filters out rows where median salary is not a number  
+- Filters out rows where the median salary is not a number  
 - Sorts the remaining rows by salary (descending)  
 - Returns a clean list of countries and their valid median salaries
 
 This filtered list is used as the source for the map chart.
-
----
 
 ## 4. Building the Country Chart
 
@@ -1571,8 +1557,6 @@ With the filtered data ready, I inserted a **Map Chart** on the dashboard:
 - Visually shows salary differences across countries  
 - Color-coded regions make comparisons intuitive  
 - Matches the instructor’s final dashboard layout
-
----
 
 ## Summary
 
@@ -1591,8 +1575,6 @@ This chart responds dynamically to the selected filters and helps users understa
 ### Dataset Used
 Continuing with the job posting dataset from Luke Barousse’s Excel course, today I worked on building the **Job Title Salary Bar Chart** and adding dynamic highlighting so the selected job title stands out visually on the dashboard. This makes the dashboard more intuitive and helps users quickly compare their chosen job against others.
 
----
-
 ## 1. Preparing the Title Sheet for Chart Data
 To support the bar chart, I expanded the **title** sheet by adding helper columns. These columns calculate:
 
@@ -1601,8 +1583,6 @@ To support the bar chart, I expanded the **title** sheet by adding helper column
 - Highlighting logic for the selected job  
 
 This sheet acts as the backend data source for the bar chart.
-
----
 
 ## 2. Calculating Median Salary for Each Job Title
 In column **B**, I used a multi‑criteria MEDIAN formula:
@@ -1626,11 +1606,8 @@ jobs[salary_year_avg]
 
 This ensures the bar chart updates dynamically when the user changes dropdown selections.
 
----
-
 ## 3. Sorting Job Titles by Median Salary
-To make the bar chart easier to read, I sorted the job titles based on their median salary:=SORT(A2#:B2#, 2, 1)
-
+To make the bar chart easier to read, I sorted the job titles based on their median salary:=SORT(A2#: B2#, 2, 1)
 
 ### Explanation:
 - Sorts the job title list (A2#) and salary list (B2#)
@@ -1638,8 +1615,6 @@ To make the bar chart easier to read, I sorted the job titles based on their med
 - Sorts in **descending order** (1)
 
 This sorted list is used directly in the bar chart.
-
----
 
 ## 4. Creating Highlighting Logic for the Chart
 To highlight the selected job title in the bar chart, I created two new columns:
@@ -1660,8 +1635,6 @@ To highlight the selected job title in the bar chart, I created two new columns:
 
 This creates a clean visual effect where the selected job title stands out clearly.
 
----
-
 ## 5. Building the Bar Chart on the Dashboard
 With the backend data ready, I inserted a **horizontal bar chart** on the dashboard:
 
@@ -1681,8 +1654,6 @@ This displays salaries like:
 
 This matches the instructor’s dashboard style.
 
----
-
 ## 6. Result on the Dashboard
 The bar chart now:
 
@@ -1695,8 +1666,6 @@ The bar chart now:
 - Displays salaries in a clean, readable format
 
 This makes the dashboard more interactive and visually intuitive.
-
----
 
 ## Summary
 Today I completed the **Job Title Salary Bar Chart** with dynamic highlighting by:
@@ -1715,8 +1684,6 @@ This feature helps users instantly see how their selected job compares to others
 ### Dataset Used
 Continuing with the job posting dataset from Luke Barousse’s Excel course, today I built the **Job Type Salary Chart**. This chart shows how median salaries vary across different job schedule types (Full‑time, Contractor, Part‑time, Internship, Temp work) based on the user’s selected filters. To support this, I expanded the **type** sheet with new formulas, sorting logic, and highlighted columns.
 
----
-
 ## 1. Preparing the Type Sheet Structure
 
 The type sheet now contains the following columns:
@@ -1731,15 +1698,11 @@ The type sheet now contains the following columns:
 
 This layout keeps raw data, sorted data, and highlight logic clearly separated and easy to maintain.
 
----
-
 ## 2. Pulling Job Schedule Types from Data Validation
 
 I pulled the cleaned list of job schedule types from the Data_Validation sheet: =Data_Validation!K2
 
 This ensures the type list matches the dropdown used on the dashboard.
-
----
 
 ## 3. Calculating Median Salary for Each Job Type
 
@@ -1765,8 +1728,6 @@ jobs[salary_year_avg]
 
 This ensures the chart updates dynamically when the user changes filters.
 
----
-
 ## 4. Sorting Job Types by Median Salary
 
 To prepare the data for charting, I sorted the job types by their median salary: =SORT(FILTER(A2:B6, ISNUMBER(B2:B6)), 2, 1)
@@ -1777,7 +1738,6 @@ To prepare the data for charting, I sorted the job types by their median salary:
 
 This ensures the chart displays job types from highest to lowest salary and avoids errors caused by #NUM! values.
 
----
 
 ## 5. Creating Highlighting Logic for the Chart
 
@@ -1797,8 +1757,6 @@ To highlight the selected job type in the chart, I added two helper columns:
   - Column G = dark blue bar  
 
 This creates a clean visual highlight effect.
-
----
 
 ## 6. Building the Job Type Chart
 
@@ -1821,8 +1779,6 @@ This displays salaries like:
 
 This keeps the dashboard consistent with the Job Title chart.
 
----
-
 ## Summary
 
 Today I completed the **Job Type Salary Chart** by:
@@ -1836,11 +1792,120 @@ Today I completed the **Job Type Salary Chart** by:
 
 This chart now updates dynamically based on the user’s selected job title, country, and job type, making the dashboard more interactive and insightful.
 
+## Day 22 – KPI Cards (Median Salary, Top Platform, Job Count)
+
+### Overview
+Today I added three KPI cards to the dashboard:
+1. **Median Salary**
+2. **Top Job Platform**
+3. **Job Count**
+
+Each KPI required backend logic, new formulas, and small adjustments to the data validation sheet. These KPIs help the dashboard communicate key insights at a glance.
+
+## 1. KPI: Median Salary
+
+### a. Pulling the median salary from the Title sheet
+The median salary for the selected job title and country had already been calculated in the **title** sheet (column E after sorting). To bring this value into a KPI card:
+
+In the **title** sheet, cell **I2**: =XLOOKUP(title, D2:D11, E2:E11)
+
+- `title` is the selected job title from the dashboard.
+- `D2:D11` contains sorted job titles.
+- `E2:E11` contains the corresponding median salaries.
+
+I renamed **I2** as: median_salary
+
+This makes it easy to reference directly from the dashboard.
+
+### b. Displaying the KPI on the dashboard
+On the dashboard:
+- Inserted a **text box**.
+- In the formula bar, linked it to: =median_salary
+- Applied formatting:
+  - Currency
+  - No decimal places
+  - Bold, large font for visibility
+
+This creates a clean, dynamic KPI card that updates whenever the user changes filters.=
+
+## 2. KPI: Top Job Platform
+
+This KPI identifies the platform where the selected job title appears most frequently (e.g., Indeed, LinkedIn, ZipRecruiter).
+
+### a. Creating the Platform sheet
+Created a new sheet named **platform**.
+
+In **A1**:job_via
+
+In **A2**:=UNIQUE(jobs[job_via])
+
+This generates a list of all platforms where jobs were posted.
+
+### b. Counting job occurrences per platform
+To calculate how many jobs appear on each platform under the selected filters, I adapted the median salary logic into a **COUNT** formula.
+
+In **B2**:
+=COUNT(
+IF(
+(jobs[job_country]=country) *
+(jobs[job_title_short]=title) *
+(ISNUMBER(SEARCH(type, jobs[job_schedule_type]))) *
+(jobs[job_via]=A2),
+jobs[salary_year_avg]
+)
+)
+
+### What this formula does:
+- Filters the dataset by:
+  - Selected country  
+  - Selected job title  
+  - Selected job type  
+  - Platform (A2)
+- Counts how many matching rows exist.
+
+This gives the number of job postings per platform.
+
+### c. Sorting platforms by job count
+To identify the top platform:
+
+In **D2**: =SORT(A2:B594, 2, -1)
+
+This produces a clean platform name for display on the dashboard.
+
+### e. Adding the KPI to the dashboard
+- Inserted a text box.
+- Linked it to the cleaned top platform cell.
+- Applied formatting to match the dashboard style.
+
+---
+
+## 3. KPI: Job Count
+
+This KPI shows how many jobs match the selected filters.
+
+### a. Updating Data_Validation sheet
+To support this KPI, I added logic to count jobs based on:
+- Selected job title  
+- Selected country  
+- Selected job type  
+
+In **Data_Validation!M2**: =XLOOKUP(title, D2:D11, E2:E11)
 
 
+Then renamed **M2** as:=count
+- Applied formatting for consistency.
 
+---
 
+## Summary
 
+Today, I completed the backend logic and dashboard display for three KPI cards:
+
+- **Median Salary** — pulled via XLOOKUP and formatted for display  
+- **Top Job Platform** — built using UNIQUE, COUNT, SORT, and SUBSTITUTE  
+- **Job Count** — added via XLOOKUP and linked to the dashboard  
+
+These KPIs make the dashboard more informative and allow users to quickly understand salary levels, job availability, and where roles are most frequently advertised.
 
 
 
