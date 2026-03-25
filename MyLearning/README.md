@@ -1907,5 +1907,89 @@ Today, I completed the backend logic and dashboard display for three KPI cards:
 
 These KPIs make the dashboard more informative and allow users to quickly understand salary levels, job availability, and where roles are most frequently advertised.
 
+## Day 23 – Dashboard Formatting, Final Touch‑Up & Sheet Protection
+
+### Overview
+Today was all about polishing the dashboard: removing visual noise, applying consistent formatting, and protecting the workbook so users can interact with filters without accidentally breaking formulas or backend logic. These final touches make the dashboard feel professional, intentional, and ready for real‑world use.
+
+## 1. Removing Gridlines for a Clean Dashboard
+
+Gridlines make sense when building formulas, but they distract from a finished dashboard.  
+To clean up the view:
+
+**View → Untick “Gridlines”**
+
+This instantly gives the dashboard a clean, modern look.
+
+## 2. Cleaning Up Chart Formatting
+
+Each chart needed a final visual pass to match the dashboard style.
+
+### Steps:
+- Selected each chart
+- **Format → Shape Outline → No Outline**
+- Ensured consistent font sizes and colors
+- Checked spacing and alignment
+
+Removing outlines helps the charts blend naturally into the dashboard instead of looking boxed‑in.
+
+## 3. Applying Proper Headings Using Cell Styles
+
+To keep typography consistent:
+
+**Home → Cell Styles → Heading**
+
+This ensures all section titles follow the same formatting rules (font, size, weight), which improves readability and visual hierarchy.
+
+## 4. Hiding Backend Sheets
+
+To prevent users from navigating into backend logic:
+
+- Right‑click each backend sheet (jobs, title, type, platform, data_validation)
+- **Hide**
+
+Only the dashboard remains visible, giving a clean user experience.
+
+## 5. Protecting the Dashboard Sheet
+
+The goal is to allow users to interact with dropdowns and slicers **without** being able to edit formulas or layout.
+
+### Steps:
+
+1. **Turn Headings On**  
+   View → Tick “Headings”  
+   (This makes it easier to select all cells.)
+
+2. **Select All Cells**  
+   Click the small triangle in the top‑left corner of the grid.
+
+3. **Unlock Only the Cells Users Should Interact With**  
+   - Right‑click → Format Cells → Protection  
+   - Untick **Locked**  
+   (This is done only for dropdown cells.)
+
+4. **Protect the Sheet**  
+   Review → Protect Sheet  
+   Allow only:
+   - **Select unlocked cells**
+
+   Everything else stays locked.
+
+5. **Turn Headings Off Again**  
+   View → Untick “Headings”
+
+This ensures the dashboard is safe from accidental edits while still being fully interactive.
+
+## Summary
+
+Today I completed the final polish and protection steps for the dashboard:
+
+- Removed gridlines for a clean visual layout  
+- Removed chart outlines and applied consistent styling  
+- Used cell styles for headings  
+- Hid all backend sheets  
+- Protected the dashboard while keeping dropdowns usable  
+
+These finishing touches make the dashboard feel professional, stable, and ready for presentation or portfolio use.
 
 
