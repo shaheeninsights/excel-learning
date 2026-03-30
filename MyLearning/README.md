@@ -1992,4 +1992,94 @@ Today I completed the final polish and protection steps for the dashboard:
 
 These finishing touches make the dashboard feel professional, stable, and ready for presentation or portfolio use.
 
+# 📘 Day 24 — Pivot Tables in Excel
+
+## 1. Introduction to Pivot Tables
+
+A **pivot table** is one of Excel’s most powerful tools for summarising large datasets. It allows you to quickly **sort, count, total, and analyse** data without writing any formulas — everything is done through simple drag‑and‑drop fields.
+
+If you have thousands of rows and want answers like *“Total sales by region”* or *“Count of job titles”*, a pivot table can produce it in seconds.
+
+### What does “Pivot” mean?
+
+The word **pivot** means to *rotate around a central point*.  
+A pivot table does exactly that — it lets you **rotate your data view**, reorganising the same dataset to see it from different angles.
+
+Same data → different perspective.
+
+### Simple Example
+
+Raw data:
+
+| Salesperson | Region | Month | Sales |
+|------------|--------|--------|--------|
+| Ahmed | North | Jan | 500 |
+| Sara | South | Jan | 300 |
+| Ahmed | North | Feb | 700 |
+| Sara | South | Feb | 400 |
+
+Pivot table summary:
+
+| Region | Jan | Feb | Total |
+|--------|------|------|--------|
+| North | 500 | 700 | 1200 |
+| South | 300 | 400 | 700 |
+
+You’ve **pivoted** the data — same rows, new insight.
+
+### Why Pivot Tables Matter
+
+- **Fast** — summarise thousands of rows instantly  
+- **Flexible** — drag fields to change the layout  
+- **Insightful** — totals, averages, comparisons, trends  
+- **Safe** — original data stays untouched  
+- **Business‑ready** — used across finance, HR, sales, marketing  
+
+### Core Idea (One Sentence)
+
+> A pivot table lets  **rearrange and summarise data** to view it from any angle — without writing formulas.
+
+---
+
+## 2. Creating a Pivot Table (Job Count Analysis)
+
+For this task, I used the **Salary Dataset** to calculate how many times each job title appears in the data.
+
+### Step 1 — Insert a Pivot Table
+
+From the **Insert** tab, Excel provides two options:
+
+- **PivotTable**  
+- **Recommended PivotTables**
+
+**Recommended PivotTables** shows pre‑built layouts and lets you choose whether to place the pivot table in the **existing sheet** or a **new sheet**.
+
+**PivotTable** (manual option) is used when you already know what you want to analyse — in this case, the **count of each job title**.
+
+### Step 2 — Choose the Data Source
+
+Excel gives two choices:
+
+1. **Select a table or range**  
+2. **Use an external data source**
+
+I selected **“Table/Range”** and chose to place the pivot table on a **new worksheet**.  
+After it was created, I renamed the sheet to **job_count**.
+
+### Step 3 — Build the Pivot Table
+
+In the **PivotTable Fields** pane:
+
+- Drag **job_title_short** into **Rows**  
+- Drag **job_title_short** again into **Values**  
+
+Excel automatically summarises it as **Count of job_title_short**, giving the job count for each title.
+
+I also explored adding **job_country** to the **Filters** area to filter job counts by country.
+
+---
+
+## Summary
+
+Today I learned how pivot tables help summarise large datasets quickly and flexibly. I created a pivot table to calculate job counts, explored the field layout, and used filters to refine the analysis. This is a key Excel skill for real‑world data analysis.
 
