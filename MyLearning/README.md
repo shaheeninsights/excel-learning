@@ -2083,3 +2083,110 @@ I also explored adding **job_country** to the **Filters** area to filter job cou
 
 Today I learned how pivot tables help summarise large datasets quickly and flexibly. I created a pivot table to calculate job counts, explored the field layout, and used filters to refine the analysis. This is a key Excel skill for real‑world data analysis.
 
+# 📘 Day 25 — Pivot Table Analysis & Monthly Salary Insights
+
+## Overview
+
+Today I continued working with PivotTables to deepen my understanding of Excel’s analytical features. My main focus areas were:
+
+- Exploring PivotTable Analyse and Design tools  
+- Calculating **average salary** (hourly and yearly) for different job roles  
+- Building a **Monthly Job Count** PivotTable using the Salary Dataset  
+- Using text functions to extract month names dynamically  
+- Refreshing PivotTables to incorporate new calculated fields  
+
+---
+
+## 1. Renaming and Exploring PivotTable Analyse Tools
+
+I started by renaming my existing PivotTable sheet to **job_count** for clarity.
+
+Then I explored the **PivotTable Analyse** tab, including:
+
+- **Active Field**  
+- **Group**  
+- **Filter**  
+- **Data**  
+- **Calculations**
+
+This helped me understand how to manage fields, refresh data, and control summarisation behaviour.
+
+---
+
+## 2. Adding Average Salary Calculations
+
+Next, I added two new measures to the PivotTable:
+
+- **Average Hourly Salary**  
+- **Average Yearly Salary**
+
+After inserting these fields, I applied appropriate number formatting to make the values easier to read. This step helped me compare salary levels across different job roles more effectively.
+
+---
+
+## 3. Exploring PivotTable Design Options
+
+I moved on to the **Design** tab to improve the visual layout of the PivotTable. I explored:
+
+- **Report Layout**  
+- **Subtotals and Grand Totals**  
+- **PivotTable Style Options**  
+- **Built‑in PivotTable Styles**
+
+This allowed me to create a cleaner, more readable table suitable for analysis and presentation.
+
+---
+
+## 4. Final Analysis: Monthly Job Count by Job Title
+
+My main objective was to create a PivotTable showing **job titles (rows)** and their **monthly posting counts (columns)**.
+
+### Step 1 — Convert Data to a Table  
+I converted the raw dataset into an Excel Table and named it **jobs**.  
+This ensures the PivotTable updates automatically when new data is added.
+
+### Step 2 — Insert a New PivotTable  
+I inserted a PivotTable based on the **jobs** table and placed it on a **new worksheet**.
+
+### Step 3 — Rename the Sheet  
+I renamed the sheet to **Monthly Count** for clarity.
+
+### Step 4 — Extract Month Names  
+To analyse job postings by month, I created a new calculated column using: =TEXT([@[job_posted_date]], "mmm")
+
+
+This extracted the month abbreviation (Jan, Feb, Mar, etc.) from each posting date.
+
+After refreshing the PivotTable, the new **month** field appeared automatically — a great example of how dynamic PivotTables are.
+
+### Step 5 — Clean Up the Layout  
+To improve readability, I:
+
+- Turned **Field Headers** off  
+- Removed **Row Labels** and **Column Labels**  
+- Added **job_country** to the Filters area to analyse specific regions  
+
+### Result  
+This produced a fully customisable PivotTable showing monthly job posting counts for each job title.
+
+I added the final output below for reference.
+
+---
+
+## Final Output: Monthly Job Count Table
+
+*(Displayed in the screenshot I added to this entry.)*
+
+---
+
+## Summary
+
+Today I strengthened my PivotTable skills by:
+
+- Adding calculated fields for average salary  
+- Exploring Analyse and Design tools  
+- Creating a dynamic month-based PivotTable  
+- Refreshing PivotTables to incorporate new fields  
+- Building a clean, filterable Monthly Job Count report  
+
+This was a productive session that helped me understand how PivotTables can transform raw data into meaningful insights.
