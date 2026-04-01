@@ -2190,3 +2190,95 @@ Today I strengthened my PivotTable skills by:
 - Building a clean, filterable Monthly Job Count report  
 
 This was a productive session that helped me understand how PivotTables can transform raw data into meaningful insights.
+
+# 📘 Day 26 — Advanced Pivot Table Features (Hierarchy & Grouping)
+
+## Overview
+
+Today I explored **advanced PivotTable features** using the same Salary Dataset (30k+ rows). My focus was on understanding how Excel handles **hierarchies**, **automatic grouping**, and **manual grouping** inside PivotTables. These features help me analyse large datasets more efficiently and reveal deeper patterns in the data.
+
+---
+
+## 1. Pivot Table Hierarchy
+
+### Step 1 — Insert PivotTable
+I inserted a new PivotTable based on the **jobs** table and placed it on a new sheet.  
+I renamed this sheet **Hierarchy**.
+
+### Step 2 — Building the Hierarchy
+My goal was to analyse **average salary by job title within each country**.
+
+To create this structure:
+
+- I placed **job_country** in **Rows**  
+- I placed **job_title_short** under it in **Rows**  
+- This automatically created a **parent → child hierarchy**  
+  - Parent: Country  
+  - Child: Job Titles  
+
+### Step 3 — Adding Salary and Job Count
+Next, I added:
+
+- **salary_year_avg** → Values (Average)  
+- **job count** → Values (Count)
+
+This allowed me to see both the **average salary** and the **number of job postings** for each country and job title.
+
+### Step 4 — Improving Layout
+I switched to the **Design** tab and selected:
+
+- **Report Layout → Show in Outline Form**
+
+This made the hierarchy clearer and easier to read.
+
+### Step 5 — Cleaning the Data
+Some job titles had blank salary values, so I used:
+
+- **Value Filters → Greater Than → 0**
+
+This removed empty or invalid salary rows.
+
+---
+
+## 2. Automatic Grouping (Date Hierarchy)
+
+Next, I explored how Excel automatically groups dates inside PivotTables.
+
+### Step 1 — Insert PivotTable for Monthly Job Count
+I created another PivotTable on a new sheet and named it **Group_Automatic**.
+
+### Step 2 — Using job_posted_date
+I dragged **job_posted_date** into **Rows**.
+
+Excel automatically created a **date hierarchy**:
+
+- **Month**  
+  - **Days**  
+    - **Times of day**  
+
+This showed how Excel breaks down dates into multiple levels without manual work.
+
+### Step 3 — Counting Job Posts
+I added **job_title_short** into **Values** (Count).  
+This gave me:
+
+- Job postings per month  
+- Job postings per day  
+- Job postings per specific time of day  
+
+### Step 4 — Exploring Drill‑Down
+By double‑clicking any number, Excel opened the underlying rows used to calculate that value.  
+This helped me understand exactly how the PivotTable aggregated the data.
+
+---
+
+## Summary
+
+Today I learned how to use advanced PivotTable features to analyse large datasets more effectively:
+
+- I created **hierarchies** to compare salaries and job counts by country and job title.  
+- I used **automatic date grouping** to break down job postings by month, day, and time.  
+- I improved PivotTable layouts using the **Design** tab.  
+- I applied **value filters** to remove empty or invalid data.  
+
+These features make PivotTables far more powerful for real‑world data analysis and reporting.
