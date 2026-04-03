@@ -2282,3 +2282,141 @@ Today I learned how to use advanced PivotTable features to analyse large dataset
 - I applied **value filters** to remove empty or invalid data.  
 
 These features make PivotTables far more powerful for real‑world data analysis and reporting.
+
+# 📘 Day 27 — Manual Grouping in PivotTables (Job Title Categorisation)
+
+## Overview
+
+Today I focused on **manual grouping** inside PivotTables to organise job titles into meaningful categories. This technique helps me simplify large datasets by creating custom parent groups, making it easier to analyse job distributions, percentages, and rankings.
+
+---
+
+## 1. Creating Custom Job Title Groups
+
+I grouped the job titles into three logical categories:
+
+### **Data Nerds**
+- Data Analyst  
+- Data Scientist  
+- Data Engineer  
+
+### **Senior Data Nerds**
+- Senior Data Engineer  
+- Senior Data Scientist  
+- Senior Data Analyst  
+
+### **Other Data Nerds**
+- Business Analyst  
+- Machine Learning Engineer  
+- Software Engineer  
+- Cloud Engineer  
+
+These groups allow me to analyse the dataset at a higher level instead of reviewing each job title individually.
+
+---
+
+## 2. Building the PivotTable
+
+### Step 1 — Insert PivotTable  
+I created a new PivotTable from the existing **jobs** table and placed it on a new sheet.
+
+### Step 2 — Add Job Titles  
+I dragged **job_title_short** into the **Rows** area.
+
+### Step 3 — Manual Grouping  
+To create each group:
+
+1. I selected the job titles I wanted to group  
+2. Right‑clicked → **Group**  
+3. Excel created a default group name (e.g., *Group1*)  
+4. I renamed it in the formula bar (e.g., *Data Nerds*)  
+
+I repeated this process for all three groups.
+
+### Step 4 — What Excel Creates in the Background  
+Excel automatically generated a new field called **job_title_short2**, which contains the **parent group names**:
+
+- Data Nerds  
+- Senior Data Nerds  
+- Other Data Nerds  
+
+This field becomes essential for calculating percentages and ranking.
+
+---
+
+## 3. Adding Job Counts and Percentages
+
+### **Job Count**
+I added **job_title_short** to the **Values** area and summarised it by **Count**.
+
+### **Percentage of Grand Total**
+I added the same field again and used:
+
+- **Show Values As → % of Grand Total**
+
+This shows how much each job title contributes to the entire dataset.
+
+### **Percentage of Parent**
+Using **job_title_short2** as the base, I applied:
+
+- **Show Values As → % of Parent**
+
+This shows how much each job title contributes **within its group**.
+
+For example:  
+If Data Analyst is 38.60% of the Data Nerds group, that means it accounts for 38.60% of all roles inside that category.
+
+---
+
+## 4. Adding Ranking
+
+I added another calculation using:
+
+- **Show Values As → Rank Largest to Smallest**
+
+### **What Rank Represents**
+Rank assigns a number based on job count:
+
+- **Rank 1** = highest job count  
+- **Rank 2** = second highest  
+- **Rank 3** = third highest  
+
+### **How Excel Calculates Rank**
+Excel sorts the job counts from largest to smallest and assigns ranking values accordingly.  
+If two job titles have the same count, Excel assigns the same rank and skips the next number (standard competition ranking).
+
+### **Why Ranking Is Useful**
+Ranking helps me quickly identify:
+
+- The most in‑demand roles  
+- The least common roles  
+- How roles compare within their group  
+
+This adds an extra layer of insight to the grouped PivotTable.
+
+---
+
+## 5. Final Output
+
+The final PivotTable displays:
+
+- Custom job groups  
+- Job counts  
+- % of Grand Total  
+- % of Parent  
+- Rank  
+
+This gives me a clear, structured view of how different job titles contribute to the overall dataset and to their respective categories.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Use **manual grouping** to create custom job categories  
+- Understand how Excel generates a new grouping field  
+- Calculate **job counts**, **% of total**, **% of parent**, and **rank**  
+- Build a clean, hierarchical PivotTable for deeper analysis  
+
+Manual grouping is a powerful technique for simplifying large datasets and creating meaningful categories that support better analysis.
