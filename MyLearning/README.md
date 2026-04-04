@@ -2420,3 +2420,130 @@ Today I learned how to:
 - Build a clean, hierarchical PivotTable for deeper analysis  
 
 Manual grouping is a powerful technique for simplifying large datasets and creating meaningful categories that support better analysis.
+
+# 📘 Day 28 — PivotCharts, Slicers & Timelines (Answering Key Analytical Questions)
+
+## Overview
+
+Today I explored **PivotCharts**, **Slicers**, and **Timelines** to answer three important analytical questions using the Salary Dataset. These tools help me turn PivotTables into interactive visual insights.
+
+The three questions I aimed to answer were:
+
+1. **How are jobs trending over time?**  
+2. **Which job has the highest percentage of demand?**  
+3. **What is the top‑paying job in data science?**
+
+Each PivotChart below is built specifically to answer one of these questions.
+
+---
+
+# 1. PivotChart: Top‑Paying Job  
+### **Q3 — What is the top‑paying job in data science?**
+
+To answer this question, I needed to calculate the **average yearly salary** for each job title and visualise the results.
+
+### Step 1 — Create PivotTable  
+I inserted a new PivotTable using the **jobs** table.
+
+### Step 2 — Add Fields  
+- Dragged **job_title_short** into **Rows**  
+- Dragged **salary_year_avg** into **Values**  
+- Changed summarisation from **Sum → Average**
+
+### Step 3 — Format Salary  
+I formatted the values as **Currency** with **0 decimal places**.
+
+### Step 4 — Rename Column  
+I renamed the values field to **Average Yearly Salary**.
+
+### Step 5 — Insert PivotChart  
+Insert → PivotChart → **Column Chart**
+
+### Step 6 — Sort  
+Sorted **Average Yearly Salary** from **Largest → Smallest** to instantly reveal the highest‑paying roles.
+
+**This PivotChart directly answers Q3 by showing which job title has the highest average yearly salary.**
+
+---
+
+# 2. PivotChart + Slicers: Highest Demand Job  
+### **Q2 — Which job has the highest percentage of demand?**
+
+To answer this question, I used the PivotTable from **Group_Manual**, which already contains:
+
+- Job counts  
+- % of Grand Total  
+- Grouped job titles (Data Nerds, Senior Data Nerds, Other Data Nerds)
+
+### Step 1 — Clean the PivotTable  
+I removed all other value fields except **% of Grand Total**, since this is the metric needed to measure demand.
+
+### Step 2 — Insert PivotChart  
+Insert → PivotChart → **Column Chart**
+
+### Step 3 — Add Slicers  
+To make the chart interactive:
+
+PivotChart Analyse → **Insert Slicer**
+
+I added slicers for:
+
+- **job_title_short2** (the grouped job categories)  
+- **job_country** (to filter demand by region)
+
+### Step 4 — Format Slicers  
+I customised:
+
+- Slicer captions  
+- Multi‑select options  
+- Layout and style  
+
+**This PivotChart answers Q2 by showing which job title contributes the highest percentage to the overall job market.**
+
+---
+
+# 3. PivotChart + Timeline: Job Counts by Month  
+### **Q1 — How are jobs trending over time?**
+
+To answer this question, I used the PivotTable created earlier for **Monthly Job Count**, which summarises job postings by month.
+
+### Step 1 — Insert PivotChart  
+Insert → PivotChart → **Line Chart**
+
+### Step 2 — Add Trendline  
+Design → Add Chart Element → **Trendline → Linear**
+
+This helps visualise the overall direction of job posting trends.
+
+### Step 3 — Insert Timeline  
+PivotChart Analyse → **Insert Timeline**
+
+Excel detected **job_posted_date**, so I selected it.
+
+### Step 4 — Explore Timeline Features  
+I tested:
+
+- Switching between **Months**, **Quarters**, and **Years**  
+- Selecting multiple periods  
+- Formatting the timeline  
+- Renaming the slicer caption to **Date**
+
+### Step 5 — Connect Filters  
+PivotTable Analyse → **Filter Connections**  
+I selected the PivotTables that should respond to the timeline.
+
+**This PivotChart answers Q1 by showing how job postings rise or fall over time, with the timeline allowing month‑by‑month or quarter‑by‑quarter exploration.**
+
+---
+
+# Summary
+
+Today I learned how to:
+
+- Build PivotCharts for salary, demand, and time‑based analysis  
+- Use **Slicers** to create interactive filters for job groups and countries  
+- Use **Timelines** to filter charts by month, quarter, or year  
+- Add **trendlines** to show long‑term patterns  
+- Format and sort PivotCharts for clearer insights  
+
+These tools make dashboards more dynamic and user‑friendly, allowing deeper exploration of the Salary Dataset.
