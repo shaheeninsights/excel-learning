@@ -2547,3 +2547,201 @@ Today I learned how to:
 - Format and sort PivotCharts for clearer insights  
 
 These tools make dashboards more dynamic and user‑friendly, allowing deeper exploration of the Salary Dataset.
+
+# 📘 Day 29 — Advanced Data Analytics: Analysis Add-Ins & Data Tables
+
+## Overview
+
+Today I explored **Analysis Add-Ins** and **Data Tables** as part of advanced data analytics in Excel. These tools extend Excel's built-in capabilities and allow for powerful what-if analysis and scenario modelling.
+
+The key topics covered were:
+
+1. **What are Excel Add-Ins?**
+2. **Analysis ToolPak Add-In**
+3. **Forecast Sheet (Windows only — workaround used on Mac)**
+4. **What-If Analysis**
+5. **One-Input Data Tables**
+6. **Two-Input Data Tables**
+
+---
+
+## What are Excel Add-Ins?
+
+**Add-Ins** are optional tools that extend Excel's functionality beyond its default capabilities — similar to installing apps on a smartphone.
+
+There are two types:
+
+- **Built-in Add-Ins** — already inside Excel but switched off by default (e.g. Analysis ToolPak, Solver, Power Pivot)
+- **Third-party Add-Ins** — downloaded from the Microsoft Store or other sources (e.g. Copilot, Power BI)
+
+### How to Enable Add-Ins on Mac
+
+On **Windows**: File → Options → Add-Ins
+
+On **Mac** (equivalent path):
+- For built-in Add-Ins → **Tools** (top Mac menu bar) → **Excel Add-Ins** → tick the Add-In → OK
+- For Store Add-Ins → **Insert** tab → **Get Add-Ins**
+
+> ⚠️ **Mac Note:** The "File → Options" path shown in the tutorial does not exist on Mac. The equivalent on Mac is Tools → Excel Add-Ins from the top menu bar of the screen (not inside the Excel ribbon).
+
+---
+
+## 1. Analysis ToolPak
+
+The **Analysis ToolPak** is a built-in Add-In that provides advanced statistical and analytical tools — without needing to write complex formulas manually.
+
+Once enabled it adds a **Data Analysis** button to the **Data** tab.
+
+It includes tools for:
+- Descriptive statistics
+- Histograms
+- Regression analysis
+- Correlation calculations
+- Moving averages
+
+### How to Enable on Mac
+1. Click **Tools** in the top Mac menu bar  
+2. Click **Excel Add-Ins**  
+3. Tick **Analysis ToolPak**  
+4. Click **OK**  
+5. A **Data Analysis** button now appears in the **Data** tab  
+
+---
+
+## 2. Forecast Sheet
+
+The **Forecast Sheet** is a visual tool that takes historical time-series data and automatically generates a forecast chart with confidence bounds.
+
+> ⚠️ **Mac Note:** Forecast Sheet is **not available on Mac** — it is a Windows-only feature. As a workaround on Mac, the same result can be achieved using formulas:
+
+### Mac Workaround — Using Formulas
+
+The dataset used was `Forecast_Original` — containing two columns:
+- **Date** — daily dates throughout the year  
+- **Job Count** — number of jobs posted each day  
+
+**Step 1 — Extend dates** below the last existing row for future periods  
+
+**Step 2 — Forecast column:**: =FORECAST.ETS(A367, $B$2:$B$366, $A$2:$A$366)
+
+**Step 3 — Lower Confidence Bound:**: =FORECAST.ETS(A367,$B$2:$B$366,$A$2:$A$366) - FORECAST.ETS.CONFINT(A367,$B$2:$B$366,$A$2:$A$366)
+
+**Step 4 — Upper Confidence Bound:**: =FORECAST.ETS(A367,$B$2:$B$366,$A$2:$A$366) + FORECAST.ETS.CONFINT(A367,$B$2:$B$366,$A$2:$A$366)
+
+
+**Step 5** — Select all four columns → Insert → **Line Chart**
+
+This produces the same chart as the Windows Forecast Sheet showing actual data, forecast line, and upper/lower confidence bounds.
+
+### Key Concepts Learned
+
+**Seasonality** — a repeating pattern in data at regular intervals.  
+In this job posting dataset the pattern was **weekly** — high job counts on weekdays (Monday–Friday) and very low counts on weekends (Saturday–Sunday). This repeats every 7 days throughout the entire year.
+
+**Why FORECAST.ETS instead of FORECAST.LINEAR:**
+
+| | FORECAST.LINEAR | FORECAST.ETS |
+|---|---|---|
+| Seasonality | Ignores it | Accounts for it |
+| Best for | Simple steady trends | Data with repeating cycles |
+
+**Moving Average** — smooths out short-term daily fluctuations to reveal the underlying long-term trend.  
+A **7-day moving average** is ideal for this dataset because each calculation covers exactly one full week (5 weekdays + 2 weekend days), cancelling out the weekly spikes and drops to produce a clean trend line.
+
+---
+
+## 3. What-If Analysis
+
+**What-If Analysis** allows you to change input values and see how those changes affect your results — without manually editing formulas one by one.
+
+The dataset used (`What-If_Analysis` sheet) modelled salary growth over 5 years with three input cells:
+
+| Input | Value |
+|---|---|
+| Base Salary | £100,000 |
+| Bonus | 10% |
+| Annual Raise | 1.5% |
+
+The result cells calculated the salary amount for each of Years 0–4 and a Total.
+
+Excel's What-If Analysis tools are found under:  
+**Data tab → What-If Analysis**
+
+Three tools are available:
+- **Scenario Manager** — save and compare multiple sets of input values  
+- **Goal Seek** — work backwards from a desired result to find the required input  
+- **Data Tables** — test multiple values of one or two inputs simultaneously  
+
+---
+
+## 4. One-Input Data Table
+
+A **One-Input Data Table** tests how changing **one input variable** affects one or more result cells — all in one structured table, without manually changing the input each time.
+
+The dataset (`Data_Table_One-Input` sheet) tested how different **Annual Raise** percentages affect salary across all 5 years and the total.
+
+Annual raise values tested: 0%, 0.5%, 1%, 1.5%, 2%, 2.5%, 3%, 3.5%, 4%
+
+Each row showed the resulting salary for Years 0–4 and Total for that specific raise percentage — giving an instant side-by-side comparison.
+
+### How to Create a One-Input Data Table
+
+1. Set up your input variable values in a **column**  
+2. Place your result formula references in a **row** at the top  
+3. Select the entire table range (inputs + results area)  
+4. Go to **Data tab → What-If Analysis → Data Table**  
+5. Leave **Row input cell** blank  
+6. Set **Column input cell** to your input variable cell (e.g. Annual Raise cell)  
+7. Click **OK**  
+
+Excel fills in all results automatically.
+
+---
+
+## 5. Two-Input Data Table
+
+A **Two-Input Data Table** tests how changing **two input variables simultaneously** affects a single result cell.
+
+The dataset (`Data_Table_Two-Input` sheet) extended the salary model to test combinations of different **Annual Raise** percentages and different **Bonus** percentages against the Total salary.
+
+This creates a grid where:
+- **Rows** represent one variable (e.g. different bonus values)  
+- **Columns** represent another variable (e.g. different raise values)  
+- Each cell in the grid shows the result for that specific combination  
+
+### How to Create a Two-Input Data Table
+
+1. Place one variable's values in a **column**  
+2. Place the other variable's values in a **row**  
+3. Place your **single result formula** at the intersection of the row and column headers  
+4. Select the entire table range  
+5. Go to **Data tab → What-If Analysis → Data Table**  
+6. Set **Row input cell** to the variable in your row  
+7. Set **Column input cell** to the variable in your column  
+8. Click **OK**  
+
+### Key Difference from One-Input
+
+| | One-Input | Two-Input |
+|---|---|---|
+| Variables tested | 1 | 2 |
+| Result cells | Multiple | Only 1 |
+| Output | Multiple columns of results | Single grid of results |
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Understand and enable **Excel Add-Ins** on Mac via Tools → Excel Add-Ins  
+- Use **FORECAST.ETS** and confidence bound formulas as a Mac alternative to Forecast Sheet  
+- Understand **seasonality** and **moving averages** in time-series data  
+- Use **What-If Analysis** to model salary scenarios  
+- Build **One-Input Data Tables** to test a single variable across multiple values  
+- Build **Two-Input Data Tables** to test two variables simultaneously against one result  
+
+These tools are essential for **scenario modelling and data-driven decision making** — allowing rapid testing of assumptions without manually changing formulas one by one.
+
+
+
