@@ -2743,5 +2743,156 @@ Today I learned how to:
 
 These tools are essential for **scenario modelling and data-driven decision making** — allowing rapid testing of assumptions without manually changing formulas one by one.
 
+# 📘 Day 30 — Analysis ToolPak: Descriptive Statistics, Histograms, Ranking, Percentile & Moving Averages
+
+## Overview
+
+Today I explored the **Analysis ToolPak** using the job postings salary dataset (30k+ rows).  
+This Add‑In provides advanced statistical tools that allow me to perform deeper analysis without writing formulas manually.
+
+The four areas I focused on were:
+
+1. **Descriptive Statistics** on the salary column  
+2. **Customisable Histograms**  
+3. **Ranking and Percentile** of salaries  
+4. **Moving Average** calculations  
+
+These tools help automate exploratory data analysis (EDA) and create more interpretable visualisations.
+
+---
+
+## 1. Descriptive Statistics (EDA on Salary Data)
+
+The **Descriptive Statistics** tool provides instant summary metrics such as mean, median, standard deviation, range, skewness, kurtosis, and more — without writing any formulas.
+
+### Steps I followed:
+
+1. On the **Data** tab, I opened **Data Analysis**, which displays a dialog box containing various statistical tools.
+2. I selected **Descriptive Statistics**, which opened another dialog box.
+3. For the input range, I selected the **salary_year_avg** column.
+4. I checked **Labels in first row**.
+5. I ticked **Summary Statistics** and left all other options as default.
+6. After clicking **OK**, Excel generated a new sheet containing all descriptive metrics.
+7. I applied some formatting to make the output easier to read.
+
+This gives a complete statistical overview of the salary distribution without needing to manually calculate each metric.
+
+---
+
+## 2. Histogram (Visualising & Customising Salary Data)
+
+Creating a histogram directly using **Insert → Chart → Histogram** results in unreadable x‑axis labels because the salary range is too wide.
+
+To fix this, I used the **Histogram tool** inside the Analysis ToolPak, which allows full control over bin sizes.
+
+### Steps I followed:
+
+1. Data → **Data Analysis** → **Histogram**
+2. Input Range → **salary_year_avg**
+3. Checked **Labels**
+4. Left all other settings as default  
+   → The output was still not readable because the bins were too broad.
+
+### Creating Custom Bins
+
+To improve readability:
+
+1. I created a new sheet and manually built a **Bin** column.
+2. I used a **£50k bin size**, dragging it down until **£400k**.
+3. I copied the **Bin** and **Frequency** labels to prepare the structure.
+4. I went back to **Data Analysis → Histogram**.
+5. This time, I selected the **custom bin range** I created.
+
+This produced a much clearer histogram where each bin represented a meaningful salary range.
+
+---
+
+## 3. Rank & Percentile (Ranking Salaries)
+
+To analyse how salaries compare across the entire dataset, I used the **Rank & Percentile** tool inside the Analysis ToolPak.
+
+### Steps I followed:
+
+1. Data → **Data Analysis**
+2. Selected **Rank and Percentile**
+3. Input Range → **salary_year_avg**
+4. Checked **Labels**
+5. Left all other settings as default
+6. Clicked **OK**
+
+Excel generated a new sheet showing:
+
+- **Rank** — position of each salary value relative to all others  
+- **Percentile** — where each salary sits within the distribution (0–1 scale)
+
+This makes it easy to identify:
+
+- Highest‑paid roles  
+- Lowest‑paid roles  
+- Median and quartile positions  
+- How individual salaries compare to the entire dataset  
+
+Rank and percentile are especially useful when analysing salary competitiveness across job titles.
+
+---
+
+## 4. Moving Average (Understanding Peaks, Troughs & Trend Smoothing)
+
+The moving average helps reveal the underlying trend in job postings by smoothing out daily fluctuations.  
+This is important because job postings naturally have **peaks** (weekdays) and **troughs** (weekends), which can make the raw line chart noisy.
+
+### Step 1 — Build a PivotTable for Daily Job Counts
+
+1. Inserted a new PivotTable on the **jobs** table  
+2. Added **job_posted_date** to **Rows**  
+3. Extracted the **day** component so each row represents a single date  
+4. Added **Count of job_posted_date** to **Values**  
+5. Renamed the values field to **Job Count**
+
+### Step 2 — Visualise the Raw Trend
+
+- Insert → **PivotChart** → Line Chart  
+- This shows the daily job posting pattern, including sharp drops on weekends
+
+### Step 3 — Apply Moving Average Using Analysis ToolPak
+
+Instead of relying on the PivotChart alone, I used the Analysis ToolPak for a cleaner moving average:
+
+1. Deleted the PivotChart  
+2. Data → **Data Analysis** → **Moving Average**
+3. Input Range → the **Job Count** column
+4. Interval → **7** (one full week)
+5. Output Range → next column (replacing the “B” reference with the correct column)
+6. Checked:
+   - **Chart Output**
+   - **Standard Error**
+
+### Step 4 — Formatting
+
+- Removed the legend  
+- Cleaned up the x‑axis to make dates readable  
+- Adjusted line thickness and colours for clarity  
+
+### Why a 7‑day Moving Average?
+
+- Captures one full weekly cycle  
+- Smooths out weekday peaks and weekend troughs  
+- Reveals the true hiring trend over time  
+- Makes long‑term patterns easier to interpret  
+
+This technique is essential for time‑series analysis, especially when the data has strong weekly seasonality like job postings.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Use **Descriptive Statistics** to instantly generate summary metrics for salary data  
+- Build **custom histograms** using the Analysis ToolPak for clearer visualisation  
+- Apply **Ranking** and **Percentile** to compare salaries statistically  
+- Use **Moving Averages** to smooth time‑series data and reveal trends  
+
+These Analysis ToolPak tools automate complex calculations and make exploratory data analysis faster, more accurate, and more insightful.
 
 
