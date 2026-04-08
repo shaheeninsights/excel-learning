@@ -2895,4 +2895,110 @@ Today I learned how to:
 
 These Analysis ToolPak tools automate complex calculations and make exploratory data analysis faster, more accurate, and more insightful.
 
+# 📘 Day 31 — Introduction to Power Query (ETL in Excel)
+
+## Overview
+
+Today I started learning **Power Query**, a tool built into Excel that helps automate data cleaning and transformation. It is designed for real‑world messy data and allows me to build repeatable, reliable processes without writing code.
+
+Power Query is essentially a visual **ETL tool**:
+
+- **Extract** — bring data in from files, folders, databases, websites  
+- **Transform** — clean, filter, merge, reshape, fix formats  
+- **Load** — send the cleaned data back into Excel or the Data Model  
+
+This makes it ideal for working with large or inconsistent datasets.
+
+---
+
+## What Power Query Does
+
+### **1. Automates the ETL Process**
+Instead of cleaning data manually every time, Power Query records each step once and replays it automatically when I click **Refresh**.  
+This removes repetitive work and reduces errors.
+
+### **2. Ensures Reproducibility**
+Every transformation step appears in the **Applied Steps** panel.  
+This means the process is:
+
+- consistent  
+- repeatable  
+- easy to audit  
+- easy for someone else to follow  
+
+It works like a saved recipe.
+
+### **3. Works Beyond Excel’s 1 Million Row Limit**
+Excel sheets can only hold ~1,048,576 rows.  
+Power Query processes data **in the background** (Data Model), so I can work with millions of rows even if the sheet itself cannot display them.
+
+---
+
+## Real‑World Analogy
+
+If five staff members send daily sales reports in different formats, normally I would clean them manually.  
+With Power Query, I set up the cleaning steps once — then click **Refresh** and everything updates automatically.
+
+---
+
+## Power Query vs Manual Work
+
+| Without Power Query | With Power Query |
+|---|---|
+| Manual copy‑paste | One‑click refresh |
+| Easy to make mistakes | Consistent steps |
+| Hard to repeat | Fully reproducible |
+| Needs coding for automation | Point‑and‑click interface |
+
+---
+
+## Getting Started in Excel
+
+**Data tab → Get Data → From File → From Excel Workbook**
+
+This opens the Power Query Navigator, where I can choose which sheet or table to load.
+
+The interface shows:
+
+- **Data preview** (centre)  
+- **Applied Steps** (right)  
+- **Queries list** (left)  
+
+Each action I take becomes a recorded step.
+
+---
+
+## Importing a Single Excel File (First ETL Process)
+
+To practise the basics, I imported one Excel file into another workbook:
+
+1. Data → **Get Data**  
+2. **From File → From Excel Workbook**  
+3. Browsed to the file location  
+4. Selected the file → **Import**  
+5. Navigator window opened  
+6. Selected the sheet I needed  
+7. Clicked **Load**
+
+This completed a full ETL cycle:
+
+- Extracted the file  
+- Transformed (if needed)  
+- Loaded into Excel  
+
+I also explored the **Queries & Connections** pane to see how Power Query stores and manages imported data.
+
+---
+
+## Summary
+
+Today I learned:
+
+- What Power Query is and why it exists  
+- How it automates ETL and ensures reproducibility  
+- How it handles datasets larger than Excel’s row limit  
+- How to import a single Excel file using Power Query  
+- How the interface works (Navigator, Applied Steps, Queries pane)
+
+This sets the foundation for more advanced Power Query transformations in the next sessions.
 
