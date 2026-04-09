@@ -3002,3 +3002,96 @@ Today I learned:
 
 This sets the foundation for more advanced Power Query transformations in the next sessions.
 
+# 📘 Day 32 — Power Query: Importing Multiple Files
+
+## Overview
+
+Today I learned how to use Power Query to import **multiple files from a folder** and combine them into one dataset.  
+This is one of the biggest advantages of Power Query — once the connection is set up, **any new file added to the folder is automatically included when I click Refresh**.  
+No manual copy‑paste, no repeating steps.
+
+This makes it perfect for monthly reports, weekly exports, or any dataset that grows over time.
+
+---
+
+## Importing Multiple Files Using “From Folder”
+
+### Steps I followed:
+
+1. Data → **Get Data**
+2. **From File → From Folder**
+3. Browsed to the folder containing all the job dataset files
+4. Clicked **OK**
+
+This time the Navigator window looked different — instead of showing sheet previews, it displayed **metadata for every file** in the folder:
+
+- File name  
+- Extension  
+- Date modified  
+- Folder path  
+
+A new button appeared: **Combine**.
+
+### Combining the Files
+
+1. Selected **Combine & Load**
+2. Power Query opened the **Combine Files** window
+3. I selected the sheet to use from each file
+4. Clicked **OK**
+
+Power Query then:
+
+- Combined all files  
+- Loaded them into a single table  
+- Added an extra column called **Source.Name** (shows which file each row came from)
+
+The final dataset contained **32,628 rows**.
+
+---
+
+## Understanding the Queries Created
+
+Power Query automatically generated:
+
+- **Transform File From…** (Helper Query)  
+- **Sample File**  
+- **Other Queries**  
+- The main query containing the combined dataset  
+
+These helper queries allow Power Query to repeat the same transformation steps for every file in the folder.
+
+This is why the setup is so powerful — if a new file is added to the folder next month, I only need to click **Refresh**, and the dataset updates instantly.
+
+---
+
+## Loading to a PivotChart (Job Title Analysis)
+
+To analyse the combined dataset:
+
+1. Right‑clicked the query **date_jobs_monthly**
+2. Selected **Load To…**
+3. Chose **PivotChart**
+4. Clicked **OK**
+
+In the PivotChart Fields panel:
+
+- Dragged **job_title_short** into **Axis (Categories)**  
+- Dragged **Count of job_title_short** into **Values**  
+- Sorted the chart to make the distribution clearer  
+
+This allowed me to quickly see which job titles appear most frequently across all combined files.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Use **Get Data → From Folder** to import multiple files at once  
+- Combine files using Power Query’s **Combine & Load** feature  
+- Understand helper queries created automatically  
+- Load the combined dataset into a PivotChart  
+- Analyse job titles across all files in one place  
+
+The biggest advantage is automation:  
+**When new files are added to the folder, clicking Refresh updates the entire dataset instantly.**
