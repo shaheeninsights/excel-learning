@@ -3095,3 +3095,141 @@ Today I learned how to:
 
 The biggest advantage is automation:  
 **When new files are added to the folder, clicking Refresh updates the entire dataset instantly.**
+
+# 📘 Day 33 — Power Query: Large Dataset ETL, Web ETL, Data Source Settings & Power Query Editor Walkthrough
+
+## Overview
+
+Today I explored several important areas of Power Query — from handling multi‑million‑row datasets to importing web tables, adjusting data source settings, and walking through the Power Query Editor in detail.  
+This session strengthened my understanding of how Power Query manages data, transforms it, and loads it into Excel for analysis.
+
+---
+
+## 1. Large Dataset ETL (Handling 2.7 Million Rows)
+
+I watched a walkthrough demonstrating how Power Query can process a **CSV file with 2,765,822 rows**.
+
+Key points:
+
+- Excel alone can only hold **~1 million rows**, but Power Query can load and process much larger datasets.
+- Even if the preview shows errors or partial data, Power Query can still **load the full dataset into a PivotTable report**.
+- By loading to a PivotTable instead of a worksheet, I can analyse all 2.7 million rows.
+- Using **COUNT** on `job_posted_date` confirms the full dataset is available for analysis.
+
+This shows how Power Query bypasses Excel’s row limit by using the Data Model.
+
+---
+
+## 2. Web-Based Table ETL (Importing a Wikipedia Table)
+
+I imported a table directly from a webpage — a useful skill for pulling live or regularly updated data.
+
+### Steps I followed:
+
+1. Copied the URL of the Wikipedia table.
+2. Data → **Get Data** → **From Other Sources** → **From Web**
+3. Pasted the URL into the dialog box.
+4. Navigator window displayed all tables found on the page.
+5. Selected **Table 1** and loaded it.
+6. The dataset contained **503 rows**, which I renamed to **S&P_500**.
+
+This is a simple but powerful way to bring online data into Excel for analysis.
+
+---
+
+## 3. Data Source Settings (Updating File Locations)
+
+I explored **Data Source Settings**, which allow me to manage and update the locations of files used in Power Query.
+
+Path:  
+**Data → Get Data → Data Source Settings**
+
+Useful for:
+
+- Updating file paths when folders move  
+- Changing the source of a query  
+- Clearing permissions  
+- Managing all connected data sources  
+
+This is essential when working with shared folders or reorganised datasets.
+
+---
+
+## 4. Query Options (Introduction)
+
+I explored **Query Options**, which control how Power Query behaves globally and at the workbook level.
+
+Path:  
+**Data → Get Data → Query Options**
+
+I looked at:
+
+- Global settings  
+- Data load behaviour  
+- Privacy levels  
+- Regional settings  
+- Query Peek  
+
+This helped me understand how Power Query manages performance, previews, and background loading.
+
+---
+
+## 5. Power Query Editor Walkthrough (Importing & Cleaning Job Posting Data)
+
+I walked through the full process of opening and exploring the Power Query Editor.
+
+### Steps I followed:
+
+1. Data → **Get Data** → **From File** → **From Excel Workbook**
+2. Selected the job posting dataset file.
+3. Navigator → selected **Sheet1**
+4. This time clicked **Transform Data** instead of Load.
+
+This opened the **Power Query Editor**, where I explored:
+
+### Power Query Editor Features
+
+- **Ribbon** (Home, Transform, Add Column, View)
+- **Column Distribution** (enabled from View)
+- **Column Profiling** (quality, distribution, statistics)
+- **Applied Steps** (every transformation recorded)
+- **Formula Bar** (M language expressions)
+- **Preview Download Time** (bottom status bar)
+
+This gave me a clear understanding of how Power Query tracks and applies transformations.
+
+### Loading to PivotTable
+
+After exploring the editor:
+
+- Closed & Loaded to a **PivotTable Report** on a new sheet.
+- Dragged `job_title_short` into **Rows**.
+- Dragged **Count of job_title_short** into **Values**.
+
+This provided a quick summary of job title frequency.
+
+---
+
+## 6. Launching Power Query Editor Directly
+
+I also learned how to open the editor without importing new data:
+
+**Data → Get Data → Launch Power Query Editor**
+
+This is useful for reviewing or editing existing queries.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Understand how Power Query handles **multi‑million‑row datasets**
+- Import **web-based tables** directly from URLs
+- Manage and update **Data Source Settings**
+- Explore **Query Options** and global behaviour
+- Navigate the **Power Query Editor** (ribbon, profiling, applied steps, M language)
+- Load transformed data into a **PivotTable** for analysis
+- Launch the editor directly for further exploration
+
+This session deepened my understanding of Power Query’s capabilities and how it supports scalable, repeatable, and efficient data transformation workflows.
