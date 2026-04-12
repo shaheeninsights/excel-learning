@@ -3233,3 +3233,189 @@ Today I learned how to:
 - Launch the editor directly for further exploration
 
 This session deepened my understanding of Power Query’s capabilities and how it supports scalable, repeatable, and efficient data transformation workflows.
+
+# 📘 Day 34 — Power Query Editor: View Tab, Query Settings, Home/Transform/Add Column Tabs & Loading Cleaned Data
+
+## Overview
+
+Today I explored the **Power Query Editor** in depth, focusing on how it supports fast, repeatable exploratory data analysis (EDA) for the job postings dataset.  
+Power Query’s interface makes it easy to inspect columns, clean data, add new fields, and manage transformation steps — all while keeping everything transparent and reproducible.
+
+---
+
+## 1. Power Query Editor — View Tab (EDA of Job Postings)
+
+The **View** tab is essential for data exploration. It provides tools that help me understand the structure, quality, and distribution of each column.
+
+### Key features explored:
+
+- **Data Preview**  
+  Shows column quality, distribution, and statistics.
+
+- **Column Profile**  
+  Displays detailed insights for the selected column, including:
+  - Min / Max  
+  - Average  
+  - Count / Distinct count  
+  - Error count  
+  - Empty values  
+
+- **Column Distribution**  
+  Visualises how values are spread across the column.
+
+- **Column Quality**  
+  Shows valid, error, and empty percentages.
+
+- **Column Selection (Go To Column)**  
+  Useful for large datasets — quickly jump to any column.
+
+- **Advanced Editor**  
+  Opens the underlying **M language** script for the query.  
+  This is where Power Query stores all transformation steps in code form.
+
+Using these tools makes EDA much faster compared to manual Excel methods.
+
+---
+
+## 2. Query Settings — Renaming & Editing Applied Steps
+
+On the right side of the editor, the **Query Settings** pane contains:
+
+- **Name** — I can rename the query directly in the text box.
+- **Applied Steps** — every transformation is recorded here.
+
+I explored how to:
+
+- Edit a step using the **gear icon** (when available)
+- Modify steps in the **formula bar**
+- Remove steps using the **X** icon
+- Right‑click a step to **rename it** for clarity
+
+This makes the transformation process transparent and easy to maintain.
+
+---
+
+## 3. Home Tab — Data Types, Refresh, Manage Columns & Undo Steps
+
+The **Home** tab contains the most commonly used tools.
+
+### Key actions explored:
+
+- **Change Data Type**  
+  Example: converting `job_posted_date` from decimal to Date.
+
+- **Refresh Preview**  
+  Reloads the sample data shown in the editor.
+
+- **Close & Load**  
+  Sends the cleaned data back to Excel.
+
+- **Manage Columns**  
+  Remove, keep, choose, or reorder columns.
+
+- **Undo Applied Steps**  
+  Clicking the **X** next to any step removes it.
+
+- **Data Source Settings**  
+  Opens the dialog to update or change file locations.
+
+- **New Query**  
+  Start a fresh import from any source.
+
+These tools form the foundation of most Power Query workflows.
+
+---
+
+## 4. Transform Tab — Text, Number, Date, and Structured Column Cleanup
+
+The **Transform** tab contains a wide range of cleaning tools.
+
+### Explored categories:
+
+- **Any Column**  
+  Replace values, detect data type, fill up/down.
+
+- **Text Column**  
+  Trim, clean, extract, split, format.
+
+- **Number Column**  
+  Standard operations (add, multiply, divide), statistics, rounding.
+
+- **Date & Time Columns**  
+  Extract year, month, day, weekday, hour, etc.
+
+- **Structured Columns**  
+  Expand, aggregate, transpose.
+
+I practised:
+
+- Splitting columns  
+- Replacing values  
+- Transposing  
+- Renaming steps to make them more descriptive  
+- Editing transformations directly in the formula bar to reduce unnecessary steps
+
+This helped me understand how Power Query builds efficient transformation pipelines.
+
+---
+
+## 5. Add Column Tab — Creating New Columns
+
+I explored how to create new fields using:
+
+- **Conditional Column**  
+- **Custom Column**  
+- **From Text / Number / Date / Time**  
+- **Index Column**  
+- **Duplicate Column**
+
+I also practised editing the formula bar to reduce the number of steps.  
+Example: renaming a column directly in the M code instead of adding an extra rename step.
+
+### Moving Columns
+
+- Select a column → **Move** (left, right, beginning, end)
+
+This helps organise the dataset before loading it back into Excel.
+
+---
+
+## 6. Load and Inspect Data — Visualising Cleaned Columns
+
+To test the cleaned data, I compared:
+
+- `salary_hour_adjusted`  
+- `salary_yearly_avg`
+
+### Steps:
+
+1. Insert → **PivotChart & PivotTable**
+2. In the dialog box, selected **Use an external data source**
+3. Chose the query **data_jobs_salary**
+4. Loaded into an existing worksheet
+5. Added:
+   - `salary_hour_adjusted` (Average) → Values  
+   - `salary_yearly_avg` → Values  
+   - `job_title_short` → Axis  
+6. Formatted both salary fields with currency symbols
+7. Changed the chart type to **Bar Chart**
+8. Hid all field buttons
+9. Moved the legend to the bottom
+
+This allowed me to compare hourly‑adjusted salary against yearly averages across job titles visually.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Use the **View** tab for fast EDA (column profiles, distribution, quality)
+- Rename queries and manage **Applied Steps**
+- Clean data using the **Home**, **Transform**, and **Add Column** tabs
+- Edit M code in the formula bar to streamline transformations
+- Load cleaned data into PivotTables and PivotCharts for analysis
+- Compare salary metrics visually using external data source connections
+
+This session deepened my understanding of the Power Query Editor and how it supports efficient, repeatable data cleaning and analysis.
+
