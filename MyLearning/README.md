@@ -3419,3 +3419,180 @@ Today I learned how to:
 
 This session deepened my understanding of the Power Query Editor and how it supports efficient, repeatable data cleaning and analysis.
 
+# 📘 Day 35 — Advanced Power Query Transformations: Indexing, Skill Extraction, Unpivoting, Grouping & Conditional Cleanup
+
+## Overview
+
+Today I worked through several advanced Power Query transformations to prepare and analyse job‑skills data.  
+The goal was to take a column containing multiple skills in one row, split them into individual rows, clean the text, and identify the top skills across the dataset.
+
+This session combined indexing, referencing queries, splitting, unpivoting, grouping, and conditional logic — all essential skills for real‑world data wrangling.
+
+---
+
+## 1. Adding an Index Column (Data Prep for Skills Analysis)
+
+To uniquely identify each job record, I added an **Index Column**.
+
+### Steps:
+
+1. Data → **Get Data** → opened Power Query Editor  
+2. Selected the main query from the left panel  
+3. Add Column → **Index Column → From 0**  
+4. Moved the index to the beginning:  
+   Transform → **Move → To Beginning**
+
+The index becomes the anchor for later transformations, especially when unpivoting skills.
+
+---
+
+## 2. Duplicate vs Reference (Creating a Skills Query)
+
+The `job_skills` column contains multiple skills in one row, separated by commas and wrapped in brackets.  
+To transform this without affecting the original query, I created a **new query**.
+
+### Two ways to create a new query:
+
+- **Duplicate**  
+  - Copies all applied steps  
+  - The new query becomes independent  
+- **Reference**  
+  - Creates a query *linked* to the original  
+  - Shows only “Source” in Applied Steps  
+  - Formula bar displays:  
+    `= OriginalQueryName`
+
+For this task, I used **Reference** and renamed the query to **data_jobs_skills**.
+
+---
+
+## 3. Splitting & Unpivoting the Skills Column
+
+The goal was to convert one row with multiple skills into multiple rows with one skill each.
+
+### Step 1 — Clean the text
+
+Transform → **Replace Values**  
+- Removed: `[`, `]`, `'`  
+- Cleaned the column before splitting
+
+### Step 2 — Split by delimiter
+
+Transform → **Split Column → By Delimiter**  
+- Delimiter: **Comma (,)**  
+- Split at: **Each occurrence**
+
+This created multiple skill columns (Skill.1, Skill.2, Skill.3, …).
+
+### Step 3 — Keep only required columns
+
+I needed only:
+
+1. `index`  
+2. `job_title_short`  
+3. All skill columns  
+
+So I used:
+
+Manage Columns → **Remove Other Columns**
+
+Then reordered columns in the formula bar to:
+
+`index`, `job_title_short`, `job_skills`
+
+### Step 4 — Unpivot
+
+Transform → **Unpivot Other Columns**
+
+This produced:
+
+- `index`  
+- `job_title_short`  
+- `attribute` (skill column labels — not needed)  
+- `value` (actual skill)
+
+I removed `attribute` and renamed `value` to **job_skills**.
+
+### Step 5 — Fixing index errors
+
+Because the index was used across multiple queries, I updated the index name in the original query and resolved minor reference errors.
+
+---
+
+## 4. Analysing the Skills Query (Cleaning Text Data)
+
+To analyse the skills:
+
+1. Home → **Close & Load**  
+2. Right‑clicked the query → **Load To → PivotChart**  
+3. Added:
+   - `job_skills` → Rows  
+   - Count of `job_skills` → Values  
+4. Sorted descending to see the most common skills
+
+### Cleaning text issues
+
+Some skills appeared twice due to spacing differences (e.g., `sql` vs ` sql`).
+
+To fix:
+
+Transform → **Format → Trim**
+
+Then Close & Load again.
+
+### Viewing Top 10 Skills
+
+In the PivotChart:
+
+- Value Filters → **Top 10**
+- Converted to a bar chart
+- Sorted A → Z for readability
+
+---
+
+## 5. Group By — Aggregating Top Skills
+
+To count how many times each skill appears:
+
+1. Opened **data_jobs_skills** in Power Query  
+2. Home → **Group By**  
+3. Grouped by: `job_skills`  
+4. New column name: **skill_count**  
+5. Operation: **Count Rows**  
+6. Sorted descending  
+7. Home → **Keep Rows → Keep Top 10**
+
+This produced a clean Top 10 Skills table.
+
+---
+
+## 6. Conditional Columns — Final Cleanup
+
+To standardise skill names:
+
+1. Transform → **Format → Capitalize Each Word**  
+2. Add Column → **Conditional Column**
+
+Example rule:
+
+- If `job_skills` = "sql"  
+  → Replace with **"SQL"**
+
+After cleaning, I loaded the data and added **job_title_short** as a slicer in the PivotChart to explore top skills by job title.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Add and manage index columns  
+- Understand the difference between **Duplicate** and **Reference** queries  
+- Split multi‑value columns and unpivot them into tidy format  
+- Clean text data using trimming, formatting, and conditional logic  
+- Group and aggregate skills to find the most common ones  
+- Build PivotCharts to visualise top skills  
+- Add slicers to analyse skills by job title  
+
+This session brought together multiple advanced Power Query techniques and demonstrated how powerful it is for transforming complex, nested data into clean, analysable structures.
+
