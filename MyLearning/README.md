@@ -3596,3 +3596,138 @@ Today I learned how to:
 
 This session brought together multiple advanced Power Query techniques and demonstrated how powerful it is for transforming complex, nested data into clean, analysable structures.
 
+# 📘 Day 36 — Power Query: Append vs Merge (Combining Monthly Job Postings)
+
+## Overview
+
+Today I continued exploring Power Query, focusing on **Append Queries**, which are used to stack datasets on top of each other.  
+This is essential when working with **monthly job‑posting files**, where each sheet contains the same columns but different rows.
+
+Append = “Add more rows”  
+Merge = “Add more columns”
+
+This session covered importing multiple sheets, appending them, organising queries into groups, and loading the combined dataset into a PivotTable for inspection.
+
+---
+
+## 1. Append Queries — Combining Monthly Job Postings
+
+### Important note:
+**Data → Get Data → Combine Queries**  
+This option is only for combining *existing queries*, not for combining multiple Excel sheets.
+
+Since the monthly job postings are stored in **different sheets inside one Excel file**, a different route is required.
+
+---
+
+## 2. Importing Monthly Sheets (Jan–Dec)
+
+### Steps:
+
+1. Data → **Get Data → From File → From Excel Workbook**
+2. Selected: `data_jobs_salary_monthly.xlsx`
+3. Navigator window opened showing multiple sheets
+4. Activated **Select Multiple Items**
+5. Selected all sheets named **Jan → Dec**
+6. Clicked **Transform Data**
+
+Power Query Editor launched with **12 separate queries** (one for each month) visible in the left‑hand pane.
+
+---
+
+## 3. Append Queries (All Months Together)
+
+### Using Home → Append Queries
+
+There are two options:
+
+- **Append Queries**  
+- **Append Queries as New**
+
+### First method: Append Queries (direct)
+
+1. Home → **Append Queries**
+2. Dialog box → selected **Three or more tables**
+3. Selected all 12 monthly queries
+4. Clicked **OK**
+
+To confirm the append worked:
+
+- Transform → **Count Rows**  
+- Result: **32,762 rows**
+
+This confirms all monthly sheets were successfully appended.
+
+---
+
+## 4. Append Queries as New (Creating a Clean Combined Query)
+
+To practice the second method:
+
+1. Deleted the last applied step (to undo the first append)
+2. Selected the **Jan** query in the left pane
+3. Home → **Append Queries → Append Queries as New**
+4. Selected **Three or more tables**
+5. Selected all 12 monthly sheets
+6. Clicked **OK**
+
+Power Query created a new query named **Append1**.
+
+I renamed it to:
+
+**data_jobs_all**
+
+This becomes the master dataset containing all monthly job postings.
+
+---
+
+## 5. Organising Queries into Groups
+
+To keep the workspace tidy:
+
+1. Selected all monthly queries (Jan–Dec)
+2. Right‑click → **Move to Group → New Group**
+3. Named the group: **data_jobs_monthly**
+
+Now the left pane contains:
+
+- **data_jobs_monthly** (folder with 12 monthly queries)
+- **Other Queries** (folder containing `data_jobs_all`)
+
+This structure makes it easy to manage raw monthly data and the combined dataset.
+
+---
+
+## 6. Load & Inspect Combined Data
+
+To analyse the appended dataset:
+
+1. Home → **Close & Load To**
+2. Selected **PivotTable Report**
+3. Inserted into a new worksheet
+
+### PivotTable fields:
+
+- `job_posted_date` → Rows  
+- Count of `job_posted_date` → Values  
+
+This allows inspection of posting frequency across the entire year.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Import multiple sheets from an Excel file  
+- Use **Append Queries** to combine datasets vertically  
+- Understand the difference between:
+  - **Append** (add rows)
+  - **Merge** (add columns)
+- Use both append methods:
+  - Append Queries  
+  - Append Queries as New  
+- Organise queries into groups for better workflow  
+- Load the combined dataset into a PivotTable for analysis  
+
+This session strengthened my understanding of how Power Query handles multi‑file or multi‑sheet datasets and prepares them for analysis.
