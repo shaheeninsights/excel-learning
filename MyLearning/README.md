@@ -3731,3 +3731,154 @@ Today I learned how to:
 - Load the combined dataset into a PivotTable for analysis  
 
 This session strengthened my understanding of how Power Query handles multi‑file or multi‑sheet datasets and prepares them for analysis.
+
+# 📘 Day 37 — Power Query: Merge Queries (Join Types, Theory, Examples & Practical Merge of Job Data)
+
+## Overview
+
+Today I learned how **Merge Queries** work in Power Query.  
+Merging is used when you want to **combine columns** from two tables based on a matching key (e.g., `job_id`).  
+This is different from **Append**, which stacks rows.
+
+Power Query supports **6 join types**, each controlling how rows from the two tables are matched.
+
+Understanding these join types is essential for data modelling, cleaning, and combining datasets.
+
+---
+
+## 1. The 6 Types of Joins in Power Query (with Examples)
+
+Power Query supports the following join kinds:
+
+### 1️⃣ **Left Outer Join**  
+**Meaning:** All rows from the first table + matching rows from the second table.  
+**Example:**  
+Table A = all job salaries  
+Table B = job skills  
+Left Outer → “Give me all salaries, even if some jobs have no skills.”
+
+### 2️⃣ **Right Outer Join**  
+**Meaning:** All rows from the second table + matching rows from the first table.  
+**Example:**  
+Right Outer → “Give me all skills, even if some jobs have no salary data.”
+
+### 3️⃣ **Full Outer Join**  
+**Meaning:** All rows from both tables, matched where possible.  
+**Example:**  
+Full Outer → “Give me every job from both tables, even unmatched ones.”
+
+### 4️⃣ **Inner Join**  
+**Meaning:** Only rows that match in both tables.  
+**Example:**  
+Inner → “Give me only jobs that appear in both salary and skills tables.”
+
+### 5️⃣ **Left Anti Join**  
+**Meaning:** Rows from the first table **that do NOT match** the second table.  
+**Example:**  
+Left Anti → “Show me jobs in salary table that have *no* skills.”
+
+### 6️⃣ **Right Anti Join**  
+**Meaning:** Rows from the second table **that do NOT match** the first table.  
+**Example:**  
+Right Anti → “Show me jobs in skills table that have *no* salary.”
+
+---
+
+## 2. Merge Queries — Combining `data_jobs_salary` and `data_jobs_skills`
+
+To practise merging, I used two existing queries:
+
+- **data_jobs_salary**  
+- **data_jobs_skills**
+
+Before merging, I checked row counts:
+
+Transform → **Count Rows**
+
+This helps verify results after merging.
+
+---
+
+## 3. Performing the Merge (Merge Queries as New)
+
+I kept `data_jobs_salary` selected, then:
+
+1. Home → **Merge Queries → Merge Queries as New**  
+   (This keeps both source queries untouched.)
+2. Merge window opened.
+3. First table: **data_jobs_salary**
+4. Selected join column: **job_id**
+5. Second table: **data_jobs_skills**
+6. Selected join column: **job_id**
+7. Join kind: **Left Outer (All from first, matching from second)**
+8. Clicked **OK**
+
+Power Query created a new merged query.
+
+---
+
+## 4. Expanding the Skills Column
+
+After merging, the new query shows a column containing a **Table** icon.  
+This represents the matching rows from the second table.
+
+To extract the skills:
+
+1. Click the **expand icon** (two arrows).  
+2. Select only the column: **job_skills**  
+3. Click **OK**
+
+Now the merged dataset contains:
+
+- Salary columns  
+- Skill column  
+- All matched by `job_id`
+
+---
+
+## 5. Exploring All Join Types (Theory + Practice)
+
+I tested different join kinds inside the merge window:
+
+### 🔹 **Full Outer Join**  
+Used to combine all rows from both tables.  
+This is useful when:
+
+- You want to detect mismatches  
+- You want a complete union of both datasets  
+- You want to troubleshoot missing job IDs
+
+### 🔹 **Fuzzy Matching**  
+Power Query also supports fuzzy matching (optional checkbox).
+
+**Fuzzy matching allows:**
+
+- Matching similar text values  
+- Handling typos  
+- Matching “Data Analyst” with “Data‑Analyst”  
+- Matching “SQL” with “Sql” (case-insensitive)
+
+**Settings include:**
+
+- Similarity threshold  
+- Maximum number of matches  
+- Ignore case  
+- Match by combining text parts
+
+This is helpful when merging messy real‑world data.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Understand all **6 join types** in Power Query  
+- Apply merge logic to combine salary and skills datasets  
+- Use **Merge Queries as New** to preserve original queries  
+- Expand nested tables after merging  
+- Explore fuzzy matching for imperfect text joins  
+- Verify merge results using row counts  
+- Practise Full Outer joins for troubleshooting mismatched job IDs  
+
+This session strengthened my understanding of relational joins and how Power Query performs column‑based data integration.
