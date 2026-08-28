@@ -3882,3 +3882,280 @@ Today I learned how to:
 - Practise Full Outer joins for troubleshooting mismatched job IDs  
 
 This session strengthened my understanding of relational joins and how Power Query performs column‑based data integration.
+
+# 📘 Day 38 — Final Analysis: Salary Analysis for Top 10 Skills (Power Query + PivotChart)
+
+## Overview
+
+Today I completed the **final analysis** of the merged dataset, focusing on understanding the **salary levels of the Top 10 skills** used by “Data Nerds” (data analysts, data engineers, BI analysts, etc.).  
+This required cleaning the merged query, loading it into a PivotChart, applying formatting, and designing a combined line‑and‑column chart for clearer insight.
+
+---
+
+## 1. Preparing the Final Merged Query
+
+I renamed the merged query to:
+
+**data_jobs_merged**
+
+Before loading it into Excel, I cleaned the query:
+
+### Removing redundant columns
+The merge produced two `job_skills` columns:
+
+- The original `job_skills` from the salary table (not needed)
+- The expanded `job_skills` from the skills table (correct one)
+
+To avoid breaking the query:
+
+1. In **Applied Steps**, clicked on **Source**  
+2. Renamed the redundant column (Power Query asked to insert a step)  
+3. Inserted the rename step  
+4. Removed the unwanted column safely  
+5. Renamed the expanded column using the **formula bar** for cleaner M‑code
+
+This ensured the merged query remained stable.
+
+---
+
+## 2. Loading to Excel for Final Analysis
+
+Home → **Close & Load To**  
+Selected:
+
+- **PivotChart & PivotTable Report**
+- Loaded into a new worksheet
+
+Excel displayed:
+
+- PivotTable  
+- PivotChart  
+- Query visible in **Queries & Connections**
+
+---
+
+## 3. Building the Final Analysis PivotTable
+
+### Fields added:
+
+- **Rows:** `job_skills`
+- **Values:** Count of `job_skills`  
+- **Values:** Average of `salary_yearly_avg`
+
+### Formatting:
+
+1. Value Field Settings → **Average**
+2. Number Format → **Currency ($)**  
+3. Decimal places → **0**
+4. Renamed the measure to:  
+   **Average Salary ($USD)**
+
+This produced a clean table showing:
+
+- Skill  
+- Job count  
+- Average yearly salary
+
+---
+
+## 4. Designing the Final PivotChart (Combo Chart)
+
+To make the analysis visually meaningful:
+
+### Chart Type:
+Insert → PivotChart → **Combo Chart**
+
+### Settings:
+
+- **Job Count** → Line chart  
+- **Average Salary** → Column chart  
+- **Job Count** → Secondary Axis  
+  (Because job count and salary are not proportional)
+
+### Clean‑up:
+
+- Removed legend  
+- Hid all field buttons  
+- Applied **Monochromatic Palette 8** for a professional look  
+- Added:
+  - Primary vertical axis title → *Average Salary ($USD)*  
+  - Secondary vertical axis title → *Job Count*  
+  - Chart title → *Top Skills Salary Analysis*
+
+This produced a clear dual‑axis chart showing:
+
+- How common each skill is  
+- How well each skill pays
+
+---
+
+## 5. Filtering to Top 10 Skills
+
+Since the dataset contains many skills, I focused on the most relevant ones.
+
+### Steps:
+
+1. PivotTable → Row Labels → **Value Filters**
+2. Selected **Top 10**
+3. Filtered by: **Job Count**
+4. Sorted by salary (descending):
+   - More Sort Options → **Descending by Average Salary**
+
+This produced a clean Top 10 list of skills ranked by salary.
+
+---
+
+## 6. Adding a Slicer (Job Title Filter)
+
+To make the analysis interactive:
+
+1. Insert → **Slicer**
+2. Selected field: `job_title_short`
+3. Renamed the slicer using **Slicer Options**
+4. Positioned it beside the chart
+
+Now the chart can show:
+
+- Top 10 skills for Data Analysts  
+- Top 10 skills for Data Engineers  
+- Top 10 skills for BI Analysts  
+- etc.
+
+This makes the analysis dynamic and job‑specific.
+
+---
+
+## Summary
+
+Today I learned how to:
+
+- Clean and prepare the final merged dataset  
+- Remove redundant columns safely using inserted steps  
+- Load merged data into PivotCharts  
+- Build a dual‑axis combo chart (line + column)  
+- Format salary fields professionally  
+- Filter to Top 10 skills using value filters  
+- Sort by salary to identify highest‑paying skills  
+- Add slicers to make the analysis interactive  
+
+This final analysis brings together all Power Query skills learned so far — merging, cleaning, loading, and visualising — to produce a meaningful salary‑skills insight for data roles.
+
+## 📘 Power Query: Append vs Merge (Beginner-Friendly Notes with Project Examples)
+
+### Overview
+Power Query provides two major methods for combining datasets: **Append** and **Merge**.  
+Both operations were used throughout Days 33–38 of this learning log.  
+The notes below summarise the differences, use‑cases, and examples based on the completed project work.
+
+---
+
+## 🔹 Append Queries — Add Rows (Vertical Combination)
+
+### Definition
+Append combines tables **vertically**, stacking one table on top of another.  
+This is used when all tables share the **same columns** and represent **different periods, regions, or partitions** of the same dataset.
+
+### When to Use
+- Combining monthly datasets  
+- Combining regional datasets  
+- Combining multiple files with identical structure  
+- Extending a fact table with additional rows
+
+### Project Example (Day 36)
+Twelve monthly job‑posting sheets (Jan–Dec) were imported from `data_jobs_salary_monthly.xlsx`.  
+Each sheet contained identical columns such as `job_id`, `job_title_short`, and `salary_yearly_avg`.
+
+These sheets were appended using:
+
+- **Append Queries**  
+- **Append Queries as New**
+
+The result was a single combined dataset named:
+
+**`data_jobs_all`**  
+containing **32,762 rows**.
+
+This is a textbook example of when Append is appropriate.
+
+---
+
+## 🔹 Merge Queries — Add Columns (Horizontal Combination)
+
+### Definition
+Merge combines tables **horizontally**, adding columns from one table to another based on a **matching key** (e.g., `job_id`).  
+This is equivalent to performing SQL joins.
+
+### When to Use
+- Adding skills to salary data  
+- Adding company information to job postings  
+- Combining two datasets using a shared identifier  
+- Enriching a fact table with additional attributes
+
+### Project Example (Day 37)
+Two queries were merged:
+
+1. `data_jobs_salary`  
+2. `data_jobs_skills`
+
+The join was performed on:
+
+**`job_id` → `job_id`**
+
+A **Left Outer Join** was used to keep all salary records and bring in matching skills.  
+The merged result was expanded and cleaned, producing:
+
+**`data_jobs_merged`**
+
+This dataset was later used for salary analysis in Day 38.
+
+---
+
+## 🔹 Quick Memory Aid
+
+| Operation | Adds | Shape | Project Example |
+|----------|------|--------|------------------|
+| **Append** | Rows | Vertical | Combining Jan–Dec monthly job postings (Day 36) |
+| **Merge** | Columns | Horizontal | Adding skills to salary using `job_id` (Day 37) |
+
+Append = “Extend the table downward”  
+Merge = “Extend the table sideways”
+
+---
+
+## 📘 Fact Table (Beginner-Friendly Definition)
+
+### Definition
+A **Fact Table** is the main analysis table containing **measurements**, **numeric values**, and **events**.  
+It often includes foreign keys that link to other descriptive tables.
+
+### Characteristics
+- Contains metrics such as salary, counts, dates  
+- Serves as the foundation for PivotTables and PivotCharts  
+- Used for final analysis and reporting
+
+### Project Example
+The merged dataset:
+
+**`data_jobs_merged`**
+
+acts as the fact table because it contains:
+
+- job identifiers  
+- job titles  
+- salary metrics  
+- posting dates  
+- skills  
+
+This table was used in Day 38 to analyse:
+
+**Top 10 skills by average yearly salary and job count**
+
+---
+
+## 📘 Summary
+
+- **Append** is used when combining datasets with identical columns (e.g., monthly job postings).  
+- **Merge** is used when enriching a dataset with additional columns based on a key (e.g., adding skills to salary data).  
+- The **fact table** is the central dataset used for final analysis, such as salary insights and skill comparisons.
+
+These concepts form the foundation of Power Query data modelling and were applied throughout Days 33–38 of this learning log.
