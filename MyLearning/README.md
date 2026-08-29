@@ -4159,3 +4159,53 @@ This table was used in Day 38 to analyse:
 - The **fact table** is the central dataset used for final analysis, such as salary insights and skill comparisons.
 
 These concepts form the foundation of Power Query data modelling and were applied throughout Days 33–38 of this learning log.
+
+# 📘 Day 39 — M Language: Understanding and Reading Power Query Code
+
+## Overview
+This session focused on learning how Power Query’s underlying scripting language, **M Language**, works.  
+The goal was to understand how Power Query records transformation steps, how to read the generated code, and how to create or duplicate queries using the **Advanced Editor**.
+
+---
+
+## 📘 What is M Language?
+**M Language** (also known as *Power Query Formula Language*) is the scripting language used by Power Query to perform data extraction, transformation, and loading (ETL).
+
+### Definition (Microsoft)
+*M is a functional, case‑sensitive language used by Power Query to define data transformation logic. Every step in a query is represented as an M expression.*
+
+### Key Characteristics
+- Functional programming language  
+- Case‑sensitive  
+- Each transformation step is stored as a variable  
+- Steps are executed sequentially  
+- The final output is defined by the `in` expression  
+- Column names appear in quotes  
+- Syntax errors are highlighted directly in the editor  
+
+---
+
+## 📘 Exploring M Language in Advanced Editor
+
+### Opening the Advanced Editor
+Using the previously created queries (`data_jobs_all`, `data_jobs_merged`), the Advanced Editor was opened to inspect the underlying M code.
+
+### Display Options
+- **Render Whitespace** was enabled to show indentation  
+- This helps visualise structure and nested operations  
+
+### Structure of M Code
+M Language uses two essential keywords:
+
+#### 1️⃣ `let`
+Defines the block where all transformation steps are listed.  
+Each step is assigned to a variable and refers to the previous step.
+
+Example structure:
+```m
+let
+    Step1 = ...,
+    Step2 = ...,
+    Step3 = ...
+in
+    Step3
