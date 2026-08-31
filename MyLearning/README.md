@@ -4209,3 +4209,72 @@ let
     Step3 = ...
 in
     Step3
+
+# 📘 Day 40 — Column Cleanup Using “Column From Examples”
+
+## Overview
+This session focused on cleaning and enriching columns in Power Query using **Column From Examples**.  
+A new cleaned query was created from the previous step and renamed:
+
+**`data_jobs_cleaned`**
+
+Several transformations were applied step‑by‑step.
+
+---
+
+## 1. job_schedule_type — Extracting “full_time”
+Using the column `job_schedule_type`:
+
+- Add Column → Column From Examples → From Selection  
+- A sample value “full_time” was typed  
+- Power Query generated a new column based on the pattern  
+- The new column was moved next to `job_schedule_type`
+
+This demonstrated how Column From Examples can extract specific text patterns.
+
+---
+
+## 2. job_posted_date — Extracting Year
+Using the column `job_posted_date`:
+
+- Add Column → Column From Examples → From Selection  
+- Typed “2023” in the first row  
+- Pressed **Ctrl + Enter** to apply the pattern to the entire column  
+
+Power Query created a new column containing the **year** extracted from each job posted date.
+
+---
+
+## 3. job_posted_date — Extracting Hour
+To extract the hour from `job_posted_date`:
+
+- Select column → Add Column → Column From Examples → From Selection  
+- Typed a sample hour value  
+- Power Query detected the hour component  
+- The new column was renamed to **`job_posted_hour`**
+
+This created a numeric hour field for time‑based analysis.
+
+---
+
+## 4. job_title — Extracting Specific Text
+Using the column `job_title`:
+
+- Add Column → Column From Examples → From Selection  
+- Highlighted the required portion of the text  
+- Pressed **Ctrl + C** to confirm the pattern  
+
+Power Query generated a new column based on the highlighted text.
+
+---
+
+## Summary
+Day 40 focused on using **Column From Examples** to clean and enrich data:
+
+- Extracted specific schedule types  
+- Extracted year from job posted date  
+- Extracted hour from job posted date  
+- Extracted targeted text from job titles  
+- Renamed the working query to `data_jobs_cleaned`
+
+Column From Examples provides an intuitive way to build transformation logic without writing M code manually.
