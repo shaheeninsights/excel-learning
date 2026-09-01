@@ -4278,3 +4278,153 @@ Day 40 focused on using **Column From Examples** to clean and enrich data:
 - Renamed the working query to `data_jobs_cleaned`
 
 Column From Examples provides an intuitive way to build transformation logic without writing M code manually.
+
+# 📘 Day 41 — Custom Column (IF Statement) + Introduction to Power Pivot & DAX
+
+## Overview
+This session continued work on column cleanup by introducing **Custom Columns** using IF statements in M Language.  
+The second part introduced **Power Pivot**, **Data Model**, and **DAX**, including how Power Query connections differ from Power Pivot connections.
+
+---
+
+# 📘 Custom Column — IF Statement in M Language
+
+## Creating a Custom Column
+A custom column was created for practice by duplicating the `job_id` column:
+
+- Add Column → Custom Column  
+- Duplicated `job_id`  
+- Clicked **OK**
+
+## IF Statement Example
+A new custom column was created using an IF statement in M Language:
+
+Formula used: = if [salary_year_avg] <> null
+then [salary_year_avg]
+else [salary_hour_adjusted]
+
+
+The column was renamed:
+
+**`salary_year_combined`**
+
+This combined yearly salary where available, otherwise used hourly‑adjusted salary.
+
+---
+
+# 📘 Introduction to Power Pivot and DAX
+
+## What is Power Pivot?
+Power Pivot is an Excel add‑in that provides:
+
+- Data Model  
+- Calculations  
+- Tables  
+- Relationships  
+- Settings  
+- DAX (Data Analysis Expressions)
+
+Power Pivot activates **data modelling** and **DAX** inside Excel.
+
+---
+
+## Data Model
+The Data Model defines:
+
+- How data is structured  
+- How tables are stored  
+- How tables relate to each other  
+
+Power Pivot enables:
+
+- Relationship creation  
+- DAX calculations  
+- Advanced modelling beyond standard Excel tables
+
+---
+
+# 📘 Power Query vs Power Pivot — When to Use Each
+
+### Power Query
+Used for **ETL**:
+- **Extract**  
+- **Transform**  
+- **Load**
+
+Power Query handles:
+- Cleaning  
+- Shaping  
+- Transforming  
+- Combining data
+
+### Power Pivot
+Used for:
+- Data modelling  
+- Relationships  
+- DAX calculations  
+- Building analytical models
+
+Power Query prepares the data.  
+Power Pivot models the data.
+
+---
+
+# 📘 Adding Data to the Data Model
+
+Using the same Excel file, the data was added to the Data Model.
+
+Steps:
+
+1. Open **Existing Connections**  
+2. Attempting to load Power Query connections into Power Pivot caused an error  
+3. Reason:  
+   **Power Query connections are not the same as Power Pivot connections**
+
+### Fixing the Error
+- Data tab → Queries & Connections  
+- Right‑side pane shows all queries  
+- Selected `data_jobs_salary`  
+- Right‑click → Load To…  
+- Option: **Only Create Connection**  
+- Check: **Add this data to the Data Model**  
+- Data loads into Power Pivot
+
+A new connection was created specifically for the Data Model.
+
+---
+
+# 📘 Adding Additional Queries to the Data Model
+
+To add `data_jobs_skills`:
+
+- Data tab → Queries & Connections  
+- Right‑click the query  
+- Load To…  
+- Only Create Connection  
+- Check: Add this data to the Data Model  
+- Data loads into Power Pivot
+
+### Result
+- Under **Connections**, still one connection (because it represents the Data Model)  
+- In **Manage Data Model**, two tables appear:
+  - `data_jobs_salary`  
+  - `data_jobs_skills`
+
+This confirms both queries were successfully added to the Data Model.
+
+---
+
+# 📘 Summary
+Day 41 covered:
+
+- Creating custom columns using M Language  
+- Practising IF statements  
+- Combining salary fields into `salary_year_combined`  
+- Understanding Power Pivot and DAX  
+- Learning the difference between Power Query and Power Pivot  
+- Fixing connection errors when loading data into the Data Model  
+- Successfully adding multiple queries into Power Pivot’s Data Model
+
+This session established the foundation for upcoming work with **relationships**, **DAX measures**, and **data modelling**.
+
+
