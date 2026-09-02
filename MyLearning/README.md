@@ -4427,4 +4427,184 @@ Day 41 covered:
 
 This session established the foundation for upcoming work with **relationships**, **DAX measures**, and **data modelling**.
 
+# 📘 Day 42 — Data Cleanup with Power Query + Power Pivot Relationships & Skill Analysis
+
+## Data Cleanup in Power Query (data_jobs_skills)
+
+### Modifying `data_jobs_skills`
+The query `data_jobs_skills` was cleaned using Power Query.  
+Since columns derived from queries cannot be edited directly in Power Pivot, the cleanup was performed in **Power Query Editor**.
+
+### Renaming Columns via Applied Steps
+Column names were renamed **inside Applied Steps**, not directly in the preview grid.  
+Renaming inside the grid creates extra steps and slows query refresh.  
+Errors caused by renaming were removed by selecting the last applied step → **Go To Error** → deleting the faulty step.
+
+After saving, the Data Model in Power Pivot updated automatically.
+
+---
+
+# 📘 Exploring Power Pivot Interface
+
+## Home Tab (Power Pivot)
+Explored the main options:
+
+- **Get External Data**  
+- **Formatting**  
+- **Sort & Filter**  
+- **Find**  
+- **Calculations**
+
+These tools support data modelling inside Power Pivot.
+
+## Data View vs Diagram View
+- **Data View**: Tabular view of the data  
+- **Diagram View**: Shows tables, relationships, and the calculations area  
+- **Calculations Area**: Used to create **Measures** (DAX calculations)
+
+Measures appear at the bottom of the table in Diagram View.
+
+---
+
+# 📘 Custom Column (IF Statement Example)
+
+A custom column was created in Power Query using M Language:
+
+Formula: = if [salary_year_avg] <> null
+then [salary_year_avg]
+else [salary_hour_adjusted]
+
+
+The column was renamed:
+
+**`salary_year_combined`**
+
+This combined yearly salary where available, otherwise used hourly‑adjusted salary.
+
+---
+
+# 📘 Power Pivot & Data Model Concepts
+
+## What is Power Pivot?
+Power Pivot is an Excel add‑in providing:
+
+- Data Model  
+- Calculations  
+- Tables  
+- Relationships  
+- DAX (Data Analysis Expressions)
+
+Power Pivot activates **data modelling** and **DAX** inside Excel.
+
+## Power Query vs Power Pivot
+- **Power Query** → ETL (Extract, Transform, Load)  
+- **Power Pivot** → Data modelling + DAX calculations  
+
+Power Query cleans data.  
+Power Pivot models data.
+
+---
+
+# 📘 Loading Queries into the Data Model
+
+Attempting to load Power Query connections directly into Power Pivot caused an error because:
+
+**Power Query connections ≠ Power Pivot connections**
+
+### Fix
+1. Data tab → **Queries & Connections**  
+2. Select `data_jobs_salary`  
+3. Right‑click → **Load To…**  
+4. Choose **Only Create Connection**  
+5. Check **Add this data to the Data Model**
+
+This created a valid Data Model connection.
+
+The same steps were repeated for `data_jobs_skills`.
+
+### Result
+- Under Excel **Connections**, still one Data Model connection  
+- In **Manage Data Model**, two tables appeared:
+  - `data_jobs_salary`
+  - `data_jobs_skills`
+
+---
+
+# 📘 Creating Relationships in Power Pivot
+
+## Using Diagram View
+In Power Pivot → Home Tab → **Diagram View**:
+
+- Dragged `job_id` from `data_jobs_salary` to `job_id` in `data_jobs_skills`
+
+### Relationship Meaning
+- **1 to Many**  
+  - One job_id in `data_jobs_salary`  
+  - Many matching skills in `data_jobs_skills`
+
+### Arrow Direction
+Indicates the **flow of filter context**:
+- Filters applied on the **1‑side** flow to the **many‑side**
+
+---
+
+# 📘 Testing the Relationship with a Pivot Table
+
+Steps:
+1. Home Tab → PivotTable → New Worksheet  
+2. From `data_jobs_salary`: add **job_title_short** to Rows  
+3. From `data_jobs_skills`: add **job_skills** to Values  
+4. Sort Values → Largest to Smallest  
+
+This demonstrated how relationships allow combining fields from different tables.
+
+---
+
+# 📘 Final Analysis — Top Skills of Data Nerds
+
+A new sheet was created:
+
+**`skill_job_Analysis`**
+
+### Pivot Table (From Data Model)
+Insert → PivotTable → From Data Model → Existing Worksheet
+
+### Fields Used
+- Rows → `job_skills` (from skills table)  
+- Values → `job_id` (count)  
+
+### Steps
+- Value Field Settings → change Sum → **Count**  
+- Sort count of job_id → Largest to Smallest  
+- Apply **Top 10** filter  
+- Also checked **Top 1** skill by count
+
+### Visualization
+- Insert → PivotChart → Bar Chart  
+- Applied basic formatting  
+- Inserted slicers:
+  - `job_title`
+  - `job_country`
+- Renamed slicer captions
+
+This produced a clear visual showing the top skills required for data‑related roles.
+
+---
+
+# 📘 Summary
+Day 42 covered:
+
+- Cleaning `data_jobs_skills` in Power Query  
+- Renaming columns via Applied Steps  
+- Creating custom columns using M Language IF statements  
+- Understanding Power Pivot interface (Home, Data View, Diagram View)  
+- Learning Data Model concepts and DAX usage  
+- Fixing Power Query vs Power Pivot connection errors  
+- Loading multiple queries into the Data Model  
+- Creating a **1‑to‑many** relationship using `job_id`  
+- Testing relationships with PivotTables  
+- Performing skill analysis using Data Model  
+- Visualizing top skills with PivotCharts and slicers  
+
+This session established the foundation for deeper DAX calculations and advanced data modelling.
 
