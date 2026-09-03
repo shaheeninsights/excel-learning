@@ -4608,3 +4608,70 @@ Day 42 covered:
 
 This session established the foundation for deeper DAX calculations and advanced data modelling.
 
+# 📘 Day 43 — Power Pivot Window: Importing, Cleaning & Quick Data Modelling
+
+## Overview
+This session focused on using the **Power Pivot Window** to import data, clean the Data Model, and perform quick modelling tasks such as sorting, filtering, formatting, and preparing salary data for analysis.
+
+---
+
+# 📘 Importing Data into the Power Pivot Window
+
+## Steps to Import
+Power Pivot → **Manage (Data Model)** → **Get External Data** → **From Other Sources**
+
+### Table Import Wizard
+- Selected **Text Files** at the bottom  
+- Located the dataset: **data_jobs_salary_all**  
+- Checked **First row as column headers**  
+- Clicked **Test Connection** → *Succeeded*  
+- Next → Import completed with **1 sheet**  
+- Status: *Success*  
+- Closed the wizard  
+
+This loaded the salary dataset directly into the Power Pivot Data Model.
+
+---
+
+# 📘 Quick Data Cleanup in Power Pivot
+
+The imported table was renamed:
+
+**`data_jobs_salary`**
+
+Only yearly salary data was analysed.
+
+### Cleanup Steps
+
+1. **Delete Column**  
+   - Removed `salary_hour_avg`  
+   - Right‑click column → Delete
+
+2. **Filter salary_rate**  
+   - Filtered to show **year** only  
+   - Unchecked **hour**
+
+3. **Format salary_year_avg**  
+   - Applied **Currency** format  
+   - Reduced decimal places to **2**
+
+4. **Sort job_posted_date**  
+   - Sorted from **Oldest → Newest**
+
+This provided a quick cleanup directly inside Power Pivot without returning to Power Query.
+
+---
+
+# 📘 Summary
+Day 43 covered:
+
+- Opening and using the **Power Pivot Window**  
+- Importing external data using the Table Import Wizard  
+- Cleaning the Data Model directly inside Power Pivot  
+- Renaming tables  
+- Deleting unnecessary columns  
+- Filtering salary types  
+- Formatting salary fields  
+- Sorting job posted dates  
+
+This session demonstrated how Power Pivot can be used for fast, lightweight data cleanup and preparation before deeper modelling and DAX work.
