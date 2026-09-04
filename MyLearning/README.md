@@ -4675,3 +4675,140 @@ Day 43 covered:
 - Sorting job posted dates  
 
 This session demonstrated how Power Pivot can be used for fast, lightweight data cleanup and preparation before deeper modelling and DAX work.
+
+# 📘 Day 44 — Introduction to Measures (Average, Median) + Implicit vs Explicit Measures
+
+## Overview
+This session introduced **Measures** in Power Pivot and DAX.  
+Measures were created to analyse job counts, average salary, and median salary.  
+The difference between **implicit** and **explicit** measures was also covered.
+
+---
+
+# 📘 What is a Measure? (Beginner‑Friendly Explanation)
+
+A **Measure** is a calculation created using **DAX (Data Analysis Expressions)** inside Power Pivot.
+
+### Why Measures Are Needed
+- PivotTables cannot perform advanced calculations on their own.  
+- Measures allow:
+  - Aggregations (SUM, COUNT, AVERAGE, MEDIAN)  
+  - Business logic (IF, DIVIDE, CALCULATE)  
+  - Reusable calculations across multiple PivotTables  
+  - Fast performance on large datasets  
+
+### Key Characteristics
+- Measures live in the **Data Model**, not in worksheet cells  
+- Measures use the operator `:=`  
+- Measures appear in the **Calculations Area**  
+- Measures can be formatted (currency, decimals, commas)  
+- Measures are used in PivotTables under the **Values** area  
+
+---
+
+# 📘 Building the First Measure — Job Count
+
+### Steps
+1. Select column: **job_title_short**  
+2. Power Pivot → Calculations → **AutoSum → Count**  
+3. A new measure appears in the **Calculations Area**  
+4. Formula bar shows the measure using `:=`  
+5. Renamed the measure to **Job Count**  
+6. Applied formatting: comma separator, no decimal places  
+
+### Result
+**Job Count = 22,306**
+
+---
+
+# 📘 Creating an Average Salary Measure
+
+### Steps
+1. Select column: **salary_year_avg**  
+2. Calculations → AutoSum → **Average**  
+3. A new measure appears under the salary column  
+4. Renamed in formula bar to **Average Salary**  
+
+This produced a reusable measure for average yearly salary.
+
+---
+
+# 📘 Creating a Median Salary Measure (DAX)
+
+### Steps
+1. Select the cell under the **Average Salary** measure  
+2. In the formula bar, typed: Median Salary := MEDIAN(data_jobs_salary[salary_year_avg])
+
+
+3. Applied formatting (currency, decimals removed)
+
+This created a DAX measure that calculates the **median** salary across all job records.
+
+---
+
+# 📘 Implicit vs Explicit Measures (Beginner‑Friendly Definitions)
+
+## Implicit Measures
+Created automatically by Excel when dragging a field into the **Values** area of a PivotTable.
+
+### Examples
+- Count of job_id  
+- Sum of salary_year_avg  
+- Average of salary_year_avg  
+
+### Characteristics
+- Created automatically  
+- Limited formatting options  
+- Cannot be reused across PivotTables  
+- Cannot use advanced DAX logic  
+
+---
+
+## Explicit Measures
+Created manually using DAX in Power Pivot.
+
+### Examples
+- `Median Salary := MEDIAN(data_jobs_salary[salary_year_avg])`  
+- `Job Count := COUNT(data_jobs_salary[job_title_short])`  
+- Custom IF logic, ratios, percentages, KPIs  
+
+### Characteristics
+- Created intentionally by the user  
+- Fully customizable  
+- Reusable across all PivotTables  
+- Support advanced DAX functions  
+- Always use `:=` operator  
+
+---
+
+# 📘 Analysing Job Count & Median Salary Using PivotTables
+
+### Steps
+1. Insert → PivotTable → **From Data Model**  
+2. Choose **Existing Worksheet**  
+3. PivotTable Fields show the table: `data_jobs_salary`  
+4. Measures appear at the bottom, prefixed with **fx**  
+5. Add:
+   - Rows → `job_title_short`  
+   - Values → `Median Salary` measure  
+
+### Result
+A PivotTable showing each job title with its median salary.
+
+### Observation
+- Explicit measures (created manually) appear with **fx**  
+- Implicit measures appear without **fx**  
+
+---
+
+# 📘 Summary
+Day 44 covered:
+
+- What measures are and why they are needed  
+- Creating measures using AutoSum (Count, Average)  
+- Writing a DAX measure for Median Salary  
+- Understanding implicit vs explicit measures  
+- Using measures inside PivotTables  
+- Analysing job titles using median salary and job count  
+
+This session established the foundation for deeper DAX calculations and advanced analytical modelling.
