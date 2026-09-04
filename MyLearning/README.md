@@ -1,4 +1,4 @@
-# My Excel learning Log
+# My Excel Learning Log
 This folder tracks my daily Excel Learning using Luke Barousse’s YouTube course.
 
 ## Day 1 - Setup + Excel basics
