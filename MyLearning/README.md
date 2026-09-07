@@ -4812,3 +4812,126 @@ Day 44 covered:
 - Analysing job titles using median salary and job count  
 
 This session established the foundation for deeper DAX calculations and advanced analytical modelling.
+# 📘 Day 45 — Calculated Columns, Euro Conversion & Date Table Relationships
+
+## Calculated Columns (Euro Conversion of `salary_year_avg`)
+Working in the **Power Pivot Window**, a calculated column was created to convert yearly salary values into Euro.
+
+### Steps
+1. Power Pivot → **Design** → **Add Column**
+2. In the first empty cell, entered a conversion formula (example): =[salary_year_avg] * 0.85
+
+*(Using a sample conversion rate for practice — actual rate depends on requirement.)*
+3. Renamed the calculated column (e.g., `salary_year_avg_euro`)
+
+### Notes
+- **Calculated Columns** appear in **black**  
+- **Imported Columns** appear in **green**  
+- Calculated columns are row‑by‑row calculations stored in the Data Model
+
+---
+
+## Creating a Measure (Median Salary in Euro)
+A new measure was created to calculate the median of the Euro‑converted salary column.
+
+### Steps
+1. Go to the **Calculations Area**  
+2. Select an empty cell  
+3. Enter DAX formula: Median Salary Euro := MEDIAN(data_jobs_salary[salary_year_avg_euro])
+4. Applied formatting (currency, no decimals)
+
+This measure can now be used in PivotTables.
+
+---
+
+# 📘 Date Table (Calendar Table)
+
+## Why a Date Table?
+A **Date Table** is required for:
+- Time‑intelligence functions  
+- Grouping by year, month, weekday  
+- Creating relationships with fact tables  
+- Analysing job postings by day of week
+
+## Creating the Date Table
+Power Pivot → **Diagram View** → **Design** → **Date Table → New**
+
+This created a new table named **Calendar**.
+
+### Calendar Table Columns Automatically Generated
+- Year  
+- Month Number  
+- Month  
+- MMM‑YYYY  
+- Day of Week Number  
+- Day of Week  
+
+These fields allow flexible time‑based analysis.
+
+---
+
+# 📘 Preparing `job_posted_date` for Relationship
+
+A formatted date column was created in `data_jobs_salary` to match the Calendar table.
+
+### Steps
+1. Power Pivot → **Data View**
+2. Add Column → enter formula: := FORMAT(data_jobs_salary[job_posted_datetime], "YYYY-mm-dd")
+3. Drag this new column next to the original datetime column  
+4. Renamed it (e.g., `job_posted_date_formatted`)
+
+This ensures both tables share a compatible date field.
+
+---
+
+# 📘 Creating the Relationship
+
+### Method 1 — Diagram View
+- Drag `job_posted_date_formatted` (from `data_jobs_salary`)  
+- Drop onto `Date` column in **Calendar**
+
+### Method 2 — Design Tab
+Design → **Create Relationship**  
+- Table 1: `data_jobs_salary` → Column: `job_posted_date_formatted`  
+- Table 2: `Calendar` → Column: `Date`  
+- OK
+
+### Result
+A **1‑to‑Many** relationship:
+- **Calendar (1)** → each date appears once  
+- **data_jobs_salary (Many)** → many job postings per date  
+
+---
+
+# 📘 Final Analysis — Job Postings by Day of the Week
+
+### Steps
+1. Close Power Pivot Window  
+2. Insert → **PivotTable** → From Data Model → Existing Worksheet  
+3. PivotTable Fields now show:
+- `Calendar`
+- `data_jobs_salary`
+
+### Build the Analysis
+- Rows → `Day of Week` (from Calendar)  
+- Values → Job Count Measure (or Median Salary Euro Measure)
+
+### Visualization
+Insert → **PivotChart** → Bar Chart  
+Shows: **Which day of the week has the most job postings?**
+
+---
+
+# 📘 Summary
+Day 45 covered:
+
+- Creating calculated columns in Power Pivot  
+- Converting salary to Euro using a calculated column  
+- Creating a DAX measure for median Euro salary  
+- Building a full Date Table (Calendar)  
+- Formatting job posted dates for relationship compatibility  
+- Creating a 1‑to‑many relationship between Calendar and Salary tables  
+- Analysing job postings by day of the week using PivotTables and PivotCharts  
+
+This session introduced essential modelling concepts: calculated columns, measures, date tables, and relationships — all foundational for advanced DAX and time‑intelligence analysis.
+
