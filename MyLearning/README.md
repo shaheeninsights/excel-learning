@@ -4935,3 +4935,134 @@ Day 45 covered:
 
 This session introduced essential modelling concepts: calculated columns, measures, date tables, and relationships — all foundational for advanced DAX and time‑intelligence analysis.
 
+# 📘 Day 46 — Power Pivot & DAX: Introduction to DAX + Aggregation Measures
+
+## What is DAX? (Beginner‑Friendly Explanation)
+**DAX (Data Analysis Expressions)** is a formula language used in:
+- **Power Pivot**
+- **Power BI**
+- **Analysis Services**
+
+DAX is designed for **data modelling and analytics**, not cell‑by‑cell calculations like Excel.
+
+### Why DAX Is Needed
+- PivotTables alone cannot perform advanced analytics.
+- DAX allows:
+  - Aggregations (SUM, COUNT, DISTINCTCOUNT)
+  - Statistical calculations (MEDIAN, AVERAGE)
+  - Filtered calculations (CALCULATE)
+  - Time‑intelligence (Year‑to‑Date, Month‑to‑Date)
+  - Combining multiple tables using relationships
+
+### Where DAX Is Used
+- **Measures** (most common)
+- **Calculated Columns**
+
+---
+
+# 📘 Difference Between Excel Functions vs DAX Functions
+
+## Excel Functions
+- Work **cell‑by‑cell**
+- Calculations depend on **worksheet layout**
+- Cannot use relationships between tables
+- Example:
+  - `=SUM(A1:A10)`
+  - `=AVERAGE(B2:B20)`
+
+## DAX Functions
+- Work on **entire tables and columns**
+- Use **relationships** between tables
+- Designed for **large datasets**
+- Example:
+  - `SUM(data_jobs_salary[salary_year_avg])`
+  - `DISTINCTCOUNT(data_jobs_salary[job_id])`
+  - `MEDIAN(data_jobs_salary[salary_year_avg])`
+
+### Simple Explanation
+Excel = calculator  
+DAX = analytical engine
+
+---
+
+# 📘 Goal of Day 46
+Calculate:
+1. **Number of skills per job title**
+2. **How skills correlate with median salary**
+
+This requires **Aggregation DAX functions**:
+- `COUNT()`
+- `DISTINCTCOUNT()`
+- Division of measures
+
+---
+
+# 📘 DAX Aggregation — Average Skills per Job
+
+## Step 1 — Create PivotTable
+1. New sheet  
+2. Insert → PivotTable → **From Data Model** → Existing Worksheet  
+3. Rows → `job_title_short` (from `data_jobs_salary`)  
+4. Values → `job_skills` (from `data_jobs_skills`)
+
+---
+
+# 📘 Step 2 — Create Measure: Skill Count
+Right‑click table **data_jobs_skills** → **Add Measure**
+
+### Measure Name
+Skill Count = COUNT(data_jobs_skills[job_skills])
+
+
+### Formatting
+- Category: Number  
+- 1000 separator  
+- 0 decimal places  
+
+This is an **explicit measure** stored under `data_jobs_skills`.
+
+Add **Skill Count** to Values.
+
+---
+
+# 📘 Step 3 — Create Measure: Job Count (Distinct Job IDs)
+Right‑click table **data_jobs_salary** → Add Measure
+
+### Measure Name
+Job Count = DISTINCTCOUNT(data_jobs_salary[job_id])
+
+
+### Formatting
+- Category: Number  
+- 1000 separator  
+- 0 decimals  
+
+Add **Job Count** to Values.
+
+---
+
+# 📘 Step 4 — Create Measure: Skills Per Job
+Right‑click table **data_jobs_skills** → Add Measure
+
+### Measure Name
+Skills Per Job = [Skill Count] / [Job Count]
+
+### Formatting
+- Category: Number  
+- 1000 separator  
+- 1 decimal place  
+
+Add **Skills Per Job** to Values.
+
+---
+
+# 📘 Summary
+Day 46 covered:
+
+- What DAX is and why it is essential for Power Pivot  
+- Differences between Excel formulas and DAX formulas  
+- Creating aggregation measures using COUNT and DISTINCTCOUNT  
+- Combining measures to calculate **Skills Per Job**  
+- Using PivotTables to analyse job titles with skill counts  
+
+This session builds the foundation for deeper DAX topics such as CALCULATE(), FILTER(), and time‑intelligence functions.
