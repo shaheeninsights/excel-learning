@@ -5066,3 +5066,125 @@ Day 46 covered:
 - Using PivotTables to analyse job titles with skill counts  
 
 This session builds the foundation for deeper DAX topics such as CALCULATE(), FILTER(), and time‑intelligence functions.
+
+# 📘 Day 47 — Statistics with DAX: Skills Per Job vs Median Salary + US vs Non‑US Salary Comparison
+
+## Statistics: Median Salary (DAX)
+This session focused on **statistical DAX functions**, especially **MEDIAN()**, and how to compare salary patterns across countries using **CALCULATE()** with filters.
+
+---
+
+# 📘 Calculating Median Salary (Statistics Function)
+
+### Steps
+1. Power Pivot → **Calculations** → **Measures** → **New Measure**
+2. **Table Name:** `data_jobs_salary`
+3. **Formula:** = MEDIAN(data_jobs_salary[salary_year_average])
+4. **Formatting:**
+- Category: Currency  
+- Symbol: $  
+- Decimal Places: 0  
+5. Add **Median Salary** under Values in PivotTable.
+
+### Notes
+- Median Salary appears first in the Values area → becomes the **Y‑axis** in charts.
+- Formatting applied:
+- Axis labels  
+- Trend line  
+- Data label connectors  
+
+This improves readability of salary trends.
+
+---
+
+# 📘 DAX Filters — US vs Non‑US Salary Comparison
+
+Goal:  
+Compare **Median Salary of US jobs** vs **Median Salary of Non‑US jobs**.
+
+---
+
+## Step 1 — Create PivotTable
+1. New sheet  
+2. Insert → PivotTable → **From Data Model** → Existing Sheet  
+3. Rows → `job_title_short`  
+4. Values → `Median Salary` measure  
+5. Insert Slicer → **job_country**
+
+This allows filtering by country.
+
+---
+
+# 📘 Step 2 — Create Measure: Median Salary (US Only)
+
+### Steps
+Power Pivot → `data_jobs_salary` → **Add Measure**
+
+### Measure Name
+Median Salary US
+
+### Formula
+Median Salary US :=
+CALCULATE(
+MEDIAN(data_jobs_salary[salary_year_average]),
+data_jobs_salary[job_country] = "US"
+)
+
+### Formatting
+- Currency  
+- $ symbol  
+- 0 decimals  
+
+Add **Median Salary US** under Values.
+
+# 📘 Step 3 — Create Measure: Median Salary (Non‑US)
+
+### Measure Name
+Median Salary NonUS
+
+### Formula
+Median Salary NonUS :=
+CALCULATE(
+MEDIAN(data_jobs_salary[salary_year_average]),
+data_jobs_salary[job_country] <> "US"
+)
+
+### Formatting
+- Currency  
+- $ symbol  
+- 0 decimals  
+
+Add **Median Salary NonUS** under Values.
+
+---
+
+# 📘 Final Analysis — Comparing US vs Non‑US Salaries
+
+### PivotTable Setup
+- Rows → `job_title_short`
+- Values →  
+  - Median Salary  
+  - Median Salary US  
+  - Median Salary NonUS
+
+### Slicer
+- `job_country`
+
+### Interpretation
+This setup allows:
+- Comparing salary differences by job title  
+- Viewing how US salaries differ from global salaries  
+- Understanding market variations using DAX filters  
+
+---
+
+# 📘 Summary
+Day 47 covered:
+
+- Using **MEDIAN()** for statistical salary analysis  
+- Creating filtered measures using **CALCULATE()**  
+- Building **US vs Non‑US salary comparison**  
+- Using slicers to interactively filter PivotTables  
+- Visualizing salary trends with charts and formatting  
+
+This session introduced essential DAX filtering logic, enabling deeper analytical insights across countries and job categories.
