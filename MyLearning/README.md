@@ -5188,3 +5188,176 @@ Day 47 covered:
 - Visualizing salary trends with charts and formatting  
 
 This session introduced essential DAX filtering logic, enabling deeper analytical insights across countries and job categories.
+
+# 📘 Day 48 — DAX Advanced: Filters, Relationships & Median Salary by Skills
+
+## Overview
+This session focused on **advanced DAX filtering**, **relationship behaviour**, and **calculating median salary by skill**.  
+It also covered **one‑way vs bidirectional filtering**, **CROSSFILTER()**, and creating measures to analyse **skill likelihood**.
+
+---
+
+# 📘 DAX: Filters & Relationships (Median Salary by Skills)
+
+## PivotTable Setup
+1. Added a new sheet  
+2. Renamed it  
+3. Insert → PivotTable → **From Data Model** → Existing Worksheet  
+4. Rows → `job_skills`  
+5. Values → `Median Salary`  
+
+This produced incorrect results due to **relationship direction issues**.
+
+---
+
+# 📘 Understanding Relationship Filtering
+
+## One‑Way Filtering (Single Direction)
+Excel Power Pivot supports **single‑direction filtering only**.
+
+### Meaning
+- Filters flow **from the lookup table (1‑side)**  
+- To the **fact table (many‑side)**  
+- Not the other way around
+
+### Example
+`data_jobs_salary (1)` → `data_jobs_skills (many)`
+
+Filtering by job title affects skills.  
+Filtering by skills **does NOT** affect salary.
+
+This is why median salary by skill did not work initially.
+
+---
+
+## Bidirectional Filtering (Both Directions)
+Supported in **Power BI**, not Excel.
+
+### Meaning
+- Filters flow **both ways** between tables  
+- Skills can filter salary  
+- Salary can filter skills  
+
+### Example
+If bidirectional filtering existed:
+- Selecting a skill would filter job titles  
+- Selecting a job title would filter skills  
+
+Since Excel does not support this, we fix it using **DAX CROSSFILTER()**.
+
+---
+
+# 📘 Fixing Relationship Issues Using CROSSFILTER()
+
+## Creating Measure: Median Salary by Skills
+
+Power Pivot → `data_jobs_skills` → Add Measure
+
+### Measure Name
+Median Salary_Skills
+
+### Formula
+Median Salary_Skills :=
+CALCULATE(
+[Median_Salary],
+CROSSFILTER(
+data_jobs_salary[job_id],
+data_jobs_skills[job_id],
+BOTH
+)
+)
+
+### Formatting
+- Currency ($)  
+- 0 decimal places  
+
+Add **Median Salary_Skills** under Values.
+
+Now the PivotTable correctly shows **median salary per skill**.
+
+---
+
+# 📘 Top 10 Skills Analysis
+
+### Steps
+1. Values → Skill Count  
+2. Values → Median Salary_Skills  
+3. Filters → Top 10 → Skill Count  
+
+### Slicer Fix
+Copied job title and country slicers from another sheet.  
+They did not work initially.
+
+Fix:
+- Select slicer → PivotTable Analyze → **Report Connections**  
+- Tick the current sheet  
+- Repeat for both slicers  
+
+Now slicers filter the correct PivotTable.
+
+---
+
+# 📘 Visualization — Combo Chart
+
+Insert → PivotChart → **Combo Chart**
+
+### Setup
+- Primary Axis → Median Salary ($USD)  
+- Secondary Axis → Skill Count  
+- Hide field buttons  
+- Add axis titles  
+- Move legend to top‑right  
+- Format line series:
+  - No line  
+  - Marker → Diamond  
+  - Size → 9  
+  - Colour → Monochrome Palette 8  
+
+### Chart Title
+**“What’s the Pay of the Top 10 Skills?”**
+
+---
+
+# 📘 DAX: MAT & FILTERS (Skill Likelihood)
+
+Goal: Calculate **percentage likelihood** of a skill appearing per job.
+
+## Creating Measure: Skill Likelihood
+
+Power Pivot → `data_jobs_salary` → Add Measure
+
+### Measure Name
+Skill Likelihood
+
+### Formula
+Skill Likelihood :=
+DIVIDE([Skill Count], [Job Count])
+
+### Formatting
+- Percentage  
+- 1 decimal place  
+
+Add **Skill Likelihood** under Values.
+
+### Visualization
+Created another combo chart with:
+- Primary Axis → Skill Likelihood (%)  
+- Secondary Axis → Skill Count  
+
+Applied similar formatting as previous chart.
+
+---
+
+# 📘 Summary
+Day 48 covered:
+
+- One‑way vs bidirectional filtering  
+- Why Excel only supports single‑direction relationships  
+- Using **CROSSFILTER()** to simulate bidirectional filtering  
+- Creating Median Salary by Skills using CALCULATE + CROSSFILTER  
+- Top 10 skills analysis with slicers  
+- Combo chart visualisation  
+- Creating Skill Likelihood measure using DIVIDE  
+- Formatting charts for clear insights  
+
+This session introduced advanced DAX filtering logic essential for multi‑table analytics.
